@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Términos y condiciones')}">
+    <title>Términos y condiciones · Decanly</title>
+  </head>
+  <body data-route="terminos" data-page="legal/terminos">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">Información para tu compra</div>
+        <h1>Términos <em>y condiciones.</em></h1>
+      </section>
+      <section class="section legal-content">
+        <div class="notice">Ingresa con tu cuenta de administrador.</div>
+        <h2>Quién atiende tu pedido</h2>
+        <dl class="provider-info">
+          <dt>Nombre comercial</dt>
+          <dd>Decanly</dd>
+          <dt>Titular o razón social</dt>
+          <dd>Pendiente de completar por el negocio</dd>
+          <dt>RUC</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>Domicilio</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>Correo de atención</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>WhatsApp</dt>
+          <dd>+51 936 240 578</dd>
+        </dl>
+        <h2>Qué estás comprando</h2>
+        <p>
+          Ofrecemos decants de 3 ml, 5 ml y 10 ml: perfume transferido del
+          frasco original a un atomizador. Las fotos de marca identifican la
+          fragancia; no incluyen el frasco original ni su caja. Las marcas
+          pertenecen a sus respectivos titulares; esta web no representa una
+          afiliación oficial.
+        </p>
+        <h2>Precios y promociones</h2>
+
+        <p>
+          El descuento de pack requiere al menos tres perfumes distintos y se
+          calcula sobre el total de productos. No se acumula con descuentos
+          individuales: se aplica la alternativa de menor precio. Si quitas un
+          perfume y tu pack deja de cumplir el mínimo, el descuento se
+          recalcula.
+        </p>
+        <h2>Confirmación y pago</h2>
+        <p>
+          El botón de WhatsApp prepara un mensaje con tu selección; no confirma
+          automáticamente una compra ni reserva productos. Revisa con el
+          vendedor el total, el plazo de entrega y los datos del titular de
+          Yape, Plin o BCP antes de pagar. Solicita el comprobante
+          correspondiente.
+        </p>
+        <h2>Tus derechos</h2>
+        <p>
+          La atención de un producto defectuoso, incorrecto o distinto a lo
+          ofrecido se evaluará conforme a los derechos del consumidor. Estas
+          condiciones no limitan los derechos que correspondan por ley.
+        </p>
+        <p>
+          <a href="/envios" th:href="@{/envios}"
+            >Consulta envíos, cambios y devoluciones</a
+          >
+          ·
+        </p>
+        <p class="hint">
+          Referencia:
+          <a
+            href="https://consumidor.gob.pe/codigo-del-consumidor/"
+            target="_blank"
+            rel="noopener"
+            >Código de Protección y Defensa del Consumidor — Indecopi</a
+          >.
+        </p>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

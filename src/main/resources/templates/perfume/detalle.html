@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Detalle de perfume')}">
+    <title>Detalle de perfume · Decanly</title>
+  </head>
+  <body data-route="catalogo" data-page="perfume/detalle">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="section detail-page">
+        <a class="text-link" href="/catalogo" th:href="@{/catalogo}"
+          >← Volver al catálogo</a
+        >
+        <div id="standalone-detail">
+          <div class="modal-content">
+            <div class="detail">
+              <div class="detail-gallery">
+                <div class="detail-thumbnails">
+                  <button
+                    class="selected"
+                    data-action="detail-view"
+                    data-id="1"
+                    data-view="perfume"
+                    aria-label="Ver frasco original"
+                    aria-pressed="true"
+                  >
+                    <img
+                      src="/assets/perfume-1.svg"
+                      alt=""
+                      th:src="@{/assets/perfume-1.svg}"
+                    /></button
+                  ><button
+                    class=""
+                    data-action="detail-view"
+                    data-id="1"
+                    data-view="decant"
+                    aria-label="Ver atomizadores de referencia"
+                    aria-pressed="false"
+                  >
+                    <img
+                      src="/assets/decants-premium.png"
+                      alt=""
+                      th:src="@{/assets/decants-premium.png}"
+                    />
+                  </button>
+                </div>
+                <div class="detail-art">
+                  <svg
+                    class="reference-photo"
+                    viewBox="107 85 398 352"
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label="Myslf Le Parfum con notas de vainilla y pimienta"
+                  >
+                    <image
+                      href="/assets/references/myslf-detail.png"
+                      width="922"
+                      height="515"
+                      th:attr="href=@{/assets/references/myslf-detail.png}"
+                    ></image></svg
+                  ><span class="detail-photo-label"
+                    >La fragancia que te inspira</span
+                  >
+                </div>
+              </div>
+              <div class="detail-copy">
+                <span class="brand">Yves Saint Laurent</span>
+                <h2>Myslf Le Parfum</h2>
+                <span class="detail-rule"></span>
+
+                <span class="size-label">SELECCIONA TU TAMAÑO</span>
+                <div class="detail-sizes">
+                  <button
+                    data-action="detail-size"
+                    data-id="1"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                  >
+                    <span class="radio-dot"></span><b>3 ml</b
+                    ><strong>S/ 25.35</strong><small>Para probar</small></button
+                  ><button
+                    data-action="detail-size"
+                    data-id="1"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                  >
+                    <span class="radio-dot"></span><b>5 ml</b
+                    ><strong>S/ 39.00</strong
+                    ><small>Para descubrir</small></button
+                  ><button
+                    data-action="detail-size"
+                    data-id="1"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                  >
+                    <span class="radio-dot"></span><b>10 ml</b
+                    ><strong>S/ 69.00</strong><small>Tu favorito diario</small>
+                  </button>
+                </div>
+                <div class="detail-actions">
+                  <button class="btn outline" data-action="add" data-id="1">
+                    <svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M5 7h14l1 14H4L5 7Zm4 1V5a3 3 0 0 1 6 0v3"
+                      ></path>
+                    </svg>
+                    Agregar al carrito</button
+                  ><button class="btn" data-action="buy-now" data-id="1">
+                    Comprar ahora
+                    <svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                    </svg>
+                  </button>
+                </div>
+                <p
+                  id="detail-feedback"
+                  class="detail-feedback"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+                <ul class="detail-perks">
+                  <li>
+                    <svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="m5 12 4 4L19 6"></path>
+                    </svg>
+                    Delivery gratis desde S/ 200
+                  </li>
+                  <li>
+                    <svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="m5 12 4 4L19 6"></path>
+                    </svg>
+                    Envíos a todo el Perú
+                  </li>
+                  <li>
+                    <svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="m5 12 4 4L19 6"></path>
+                    </svg>
+                    Coordina tu entrega por WhatsApp
+                  </li>
+                </ul>
+                <div class="detail-trust">
+                  <span
+                    ><svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z"
+                      ></path>
+                      <path d="m8 12 3 3 5-6"></path></svg
+                    >Perfume<br />original</span
+                  ><span
+                    ><svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path
+                        d="M9 3h6v4H9V3Zm0 4v3H7v11h10V10h-2V7M7 13h10"
+                      ></path></svg
+                    >Atomizador<br />de vidrio</span
+                  ><span
+                    ><svg
+                      class="ui-icon"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M3 5h11v12H3V5Zm11 5h4l3 4v3h-7"></path>
+                      <circle cx="7" cy="18" r="2"></circle>
+                      <circle cx="17" cy="18" r="2"></circle></svg
+                    >Entrega<br />coordinada</span
+                  >
+                </div>
+                <p class="hint">
+                  Recibirás un decant de 3 ml. El frasco original de la foto no
+                  está incluido.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

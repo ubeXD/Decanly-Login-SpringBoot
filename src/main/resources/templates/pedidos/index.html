@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Pedidos')}">
+    <title>Productos y stock · Decanly</title>
+  </head>
+  <body data-route="cuenta" data-page="pedidos/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="admin-shell">
+        <aside class="admin-sidebar">
+          <span class="admin-label">DECANLY STUDIO</span>
+          <p>Tu colección,<br />bajo control.</p>
+          <nav aria-label="Secciones de administración">
+            <button class="" data-action="admin-tab" data-value="products">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect></svg
+              ><span>Productos y stock</span></button
+            ><button class="" data-action="admin-tab" data-value="promos">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 3h8l10 10-8 8L3 11V3Z"></path>
+                <circle cx="7" cy="7" r="1"></circle></svg
+              ><span>Promociones y packs</span>
+            </button>
+            <button
+              type="button"
+              data-action="admin-tab"
+              data-value="orders"
+              class="selected"
+            >
+              Pedidos
+            </button>
+          </nav>
+          <a href="/" th:href="@{/}"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Ver tienda</a
+          ><button data-action="logout">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M9 4H4v16h5M10 12h11m-5-5 5 5-5 5"></path>
+            </svg>
+            Cerrar sesión
+          </button>
+        </aside>
+        <div class="admin-main">
+          <div class="admin-heading">
+            <div>
+              <span class="eyebrow">Panel de administración</span>
+              <h1>Pedidos</h1>
+              <p>Revisa la selección y coordina cada entrega.</p>
+            </div>
+            <button
+              type="button"
+              class="btn light"
+              data-action="refresh-orders"
+            >
+              Actualizar
+            </button>
+          </div>
+          <div id="orders-content" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

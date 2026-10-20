@@ -1,0 +1,7 @@
+{
+  "name": "decanly-frontend-tests",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node check.mjs" },
+  "devDependencies": { "jsdom": "26.1.0", "css-tree": "3.1.0" }
+}

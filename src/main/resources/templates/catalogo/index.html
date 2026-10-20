@@ -1,0 +1,4291 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Catálogo')}">
+    <title>Catálogo · Decanly</title>
+  </head>
+  <body data-route="catalogo" data-page="catalogo/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">La colección Decanly</div>
+        <h1>Tu próximo favorito.</h1>
+        <p>Perfumes que quieres conocer. En decants de 3, 5 y 10 ml.</p>
+      </section>
+      <section class="section shop">
+        <aside class="filters">
+          <div class="filter-heading">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+              <circle cx="8" cy="6" r="2"></circle>
+              <circle cx="16" cy="12" r="2"></circle>
+              <circle cx="10" cy="18" r="2"></circle>
+            </svg>
+            Filtrar colección
+          </div>
+          <label for="search">BUSCAR PERFUME</label
+          ><input
+            id="search"
+            class="field"
+            placeholder="Nombre, marca o nota…"
+            value=""
+            type="search"
+          />
+          <label for="brand-filter">MARCA</label
+          ><select id="brand-filter" class="field">
+            <option value="">Todas las marcas</option>
+            <option>Afnan</option>
+            <option>Al Haramain</option>
+            <option>Armaf</option>
+            <option>Azzaro</option>
+            <option>Carolina Herrera</option>
+            <option>Chanel</option>
+            <option>Creed</option>
+            <option>Dior</option>
+            <option>Dolce &amp; Gabbana</option>
+            <option>Emporio Armani</option>
+            <option>French Avenue</option>
+            <option>Giorgio Armani</option>
+            <option>Jean Paul Gaultier</option>
+            <option>Lattafa</option>
+            <option>Prada</option>
+            <option>Rabanne</option>
+            <option>Rasasi</option>
+            <option>Valentino</option>
+            <option>Versace</option>
+            <option>Xerjoff</option>
+            <option>Yves Saint Laurent</option>
+          </select>
+          <label for="category-filter">TU ESTILO</label
+          ><select class="field" id="category-filter">
+            <option value="">Todos los aromas</option>
+            <option>Verano</option>
+            <option>Invierno</option>
+            <option>Dulce</option>
+            <option>Amaderado</option>
+            <option>Limpio</option>
+            <option>Floral</option>
+          </select>
+          <label>OCASIÓN</label>
+          <div class="filter-buttons">
+            <button class="selected" data-action="occasion" data-value="">
+              Todas</button
+            ><button class="" data-action="occasion" data-value="Día">
+              Día</button
+            ><button class="" data-action="occasion" data-value="Noche">
+              Noche
+            </button>
+          </div>
+          <div class="format-note">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M9 3h6v4H9V3Zm0 4v3H7v11h10V10h-2V7M7 13h10"></path>
+            </svg>
+            <p>
+              <b>Una fragancia, tres tamaños.</b><br />3 ml para probar · 5 ml
+              para descubrir<br />10 ml para llevar contigo
+            </p>
+          </div>
+          <button class="text-link clear" data-action="clear-filters">
+            Limpiar filtros
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m6 6 12 12M6 18 18 6"></path>
+            </svg>
+          </button>
+        </aside>
+        <div>
+          <div class="toolbar">
+            <span id="result-count">50 fragancias para descubrir</span
+            ><select id="sort" aria-label="Ordenar perfumes">
+              <option value="featured" selected="">Nuestra selección</option>
+              <option value="price-up">Menor precio</option>
+              <option value="price-down">Mayor precio</option>
+              <option value="name">Nombre A–Z</option>
+            </select>
+          </div>
+          <div class="grid" id="product-grid">
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="1"
+                aria-label="Ver Myslf Le Parfum"
+              >
+                <img
+                  src="/assets/perfume-1.svg"
+                  alt="Myslf Le Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-1.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Yves Saint Laurent</span>
+                <h3>
+                  <button data-action="detail" data-id="1">
+                    Myslf Le Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Myslf Le Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="1"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="1"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="1"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="1">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="2"
+                aria-label="Ver Y Eau De Parfum"
+              >
+                <img
+                  src="/assets/perfume-2.svg"
+                  alt="Y Eau De Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-2.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Yves Saint Laurent</span>
+                <h3>
+                  <button data-action="detail" data-id="2">
+                    Y Eau De Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Y Eau De Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="2"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="2"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="2"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="2">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="3"
+                aria-label="Ver Power Of You"
+              >
+                <img
+                  src="/assets/perfume-3.svg"
+                  alt="Power Of You"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-3.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Emporio Armani</span>
+                <h3>
+                  <button data-action="detail" data-id="3">Power Of You</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 29.25 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Power Of You">
+                  <button
+                    data-action="size"
+                    data-id="3"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="3"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="3"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="3">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="4"
+                aria-label="Ver Invictus Victory Elixir"
+              >
+                <img
+                  src="/assets/perfume-4.svg"
+                  alt="Invictus Victory Elixir"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-4.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Rabanne</span>
+                <h3>
+                  <button data-action="detail" data-id="4">
+                    Invictus Victory Elixir
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Invictus Victory Elixir"
+                >
+                  <button
+                    data-action="size"
+                    data-id="4"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="4"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="4"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="4">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="5"
+                aria-label="Ver Stronger Powerfully"
+              >
+                <img
+                  src="/assets/perfume-5.svg"
+                  alt="Stronger Powerfully"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-5.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Emporio Armani</span>
+                <h3>
+                  <button data-action="detail" data-id="5">
+                    Stronger Powerfully
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Stronger Powerfully"
+                >
+                  <button
+                    data-action="size"
+                    data-id="5"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="5"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="5"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="5">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="6"
+                aria-label="Ver Stronger Intensely"
+              >
+                <img
+                  src="/assets/perfume-6.svg"
+                  alt="Stronger Intensely"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-6.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Emporio Armani</span>
+                <h3>
+                  <button data-action="detail" data-id="6">
+                    Stronger Intensely
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Stronger Intensely"
+                >
+                  <button
+                    data-action="size"
+                    data-id="6"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="6"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="6"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="6">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="7"
+                aria-label="Ver Aqua Di Gio Parfum"
+              >
+                <img
+                  src="/assets/perfume-7.svg"
+                  alt="Aqua Di Gio Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-7.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Giorgio Armani</span>
+                <h3>
+                  <button data-action="detail" data-id="7">
+                    Aqua Di Gio Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Aqua Di Gio Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="7"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="7"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="7"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="7">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="8"
+                aria-label="Ver Aqua Di Gio Profondo"
+              >
+                <img
+                  src="/assets/perfume-8.svg"
+                  alt="Aqua Di Gio Profondo"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-8.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Giorgio Armani</span>
+                <h3>
+                  <button data-action="detail" data-id="8">
+                    Aqua Di Gio Profondo
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Aqua Di Gio Profondo"
+                >
+                  <button
+                    data-action="size"
+                    data-id="8"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="8"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="8"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="8">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="9"
+                aria-label="Ver Valentino Coral Fantasy"
+              >
+                <img
+                  src="/assets/perfume-9.svg"
+                  alt="Valentino Coral Fantasy"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-9.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Valentino</span>
+                <h3>
+                  <button data-action="detail" data-id="9">
+                    Valentino Coral Fantasy
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Valentino Coral Fantasy"
+                >
+                  <button
+                    data-action="size"
+                    data-id="9"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="9"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="9"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="9">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="10"
+                aria-label="Ver Valentino Melancholia"
+              >
+                <img
+                  src="/assets/perfume-10.svg"
+                  alt="Valentino Melancholia"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-10.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Valentino</span>
+                <h3>
+                  <button data-action="detail" data-id="10">
+                    Valentino Melancholia
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Valentino Melancholia"
+                >
+                  <button
+                    data-action="size"
+                    data-id="10"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="10"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="10"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="10">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="11"
+                aria-label="Ver Born In Roma Intense"
+              >
+                <img
+                  src="/assets/perfume-11.svg"
+                  alt="Born In Roma Intense"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-11.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Valentino</span>
+                <h3>
+                  <button data-action="detail" data-id="11">
+                    Born In Roma Intense
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Born In Roma Intense"
+                >
+                  <button
+                    data-action="size"
+                    data-id="11"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="11"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="11"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="11">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="12"
+                aria-label="Ver Born In Roma Extradose"
+              >
+                <img
+                  src="/assets/perfume-12.svg"
+                  alt="Born In Roma Extradose"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-12.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Valentino</span>
+                <h3>
+                  <button data-action="detail" data-id="12">
+                    Born In Roma Extradose
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Born In Roma Extradose"
+                >
+                  <button
+                    data-action="size"
+                    data-id="12"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="12"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="12"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="12">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="13"
+                aria-label="Ver Luna Rossa Carbón Edp"
+              >
+                <img
+                  src="/assets/perfume-13.svg"
+                  alt="Luna Rossa Carbón Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-13.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Prada</span>
+                <h3>
+                  <button data-action="detail" data-id="13">
+                    Luna Rossa Carbón Edp
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Luna Rossa Carbón Edp"
+                >
+                  <button
+                    data-action="size"
+                    data-id="13"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="13"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="13"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="13">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="14"
+                aria-label="Ver Paradigme Edp"
+              >
+                <img
+                  src="/assets/perfume-14.svg"
+                  alt="Paradigme Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-14.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Prada</span>
+                <h3>
+                  <button data-action="detail" data-id="14">
+                    Paradigme Edp
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Paradigme Edp">
+                  <button
+                    data-action="size"
+                    data-id="14"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="14"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="14"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="14">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="15"
+                aria-label="Ver Le Male Elixir"
+              >
+                <img
+                  src="/assets/perfume-15.svg"
+                  alt="Le Male Elixir"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-15.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="15">
+                    Le Male Elixir
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Le Male Elixir">
+                  <button
+                    data-action="size"
+                    data-id="15"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="15"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="15"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="15">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="16"
+                aria-label="Ver Le Male Le Parfum"
+              >
+                <img
+                  src="/assets/perfume-16.svg"
+                  alt="Le Male Le Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-16.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="16">
+                    Le Male Le Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Le Male Le Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="16"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="16"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="16"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="16">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="17"
+                aria-label="Ver Le Beau Le Parfum"
+              >
+                <img
+                  src="/assets/perfume-17.svg"
+                  alt="Le Beau Le Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-17.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="17">
+                    Le Beau Le Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Le Beau Le Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="17"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="17"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="17"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="17">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="18"
+                aria-label="Ver Paradise Garden"
+              >
+                <img
+                  src="/assets/perfume-18.svg"
+                  alt="Paradise Garden"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-18.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="18">
+                    Paradise Garden
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Paradise Garden"
+                >
+                  <button
+                    data-action="size"
+                    data-id="18"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="18"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="18"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="18">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="19"
+                aria-label="Ver Scandal Absolu"
+              >
+                <img
+                  src="/assets/perfume-19.svg"
+                  alt="Scandal Absolu"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-19.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="19">
+                    Scandal Absolu
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Scandal Absolu">
+                  <button
+                    data-action="size"
+                    data-id="19"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="19"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="19"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="19">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="20"
+                aria-label="Ver Scandal Le Parfum"
+              >
+                <img
+                  src="/assets/perfume-20.svg"
+                  alt="Scandal Le Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-20.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Jean Paul Gaultier</span>
+                <h3>
+                  <button data-action="detail" data-id="20">
+                    Scandal Le Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Scandal Le Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="20"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="20"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="20"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="20">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="21"
+                aria-label="Ver The Most Wanted Intense"
+              >
+                <img
+                  src="/assets/perfume-21.svg"
+                  alt="The Most Wanted Intense"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-21.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Azzaro</span>
+                <h3>
+                  <button data-action="detail" data-id="21">
+                    The Most Wanted Intense
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de The Most Wanted Intense"
+                >
+                  <button
+                    data-action="size"
+                    data-id="21"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="21"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="21"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="21">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="22"
+                aria-label="Ver The Most Wanted Parfum"
+              >
+                <img
+                  src="/assets/perfume-22.svg"
+                  alt="The Most Wanted Parfum"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-22.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Azzaro</span>
+                <h3>
+                  <button data-action="detail" data-id="22">
+                    The Most Wanted Parfum
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de The Most Wanted Parfum"
+                >
+                  <button
+                    data-action="size"
+                    data-id="22"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="22"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="22"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="22">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="23"
+                aria-label="Ver Erba Pura"
+              >
+                <img
+                  src="/assets/perfume-23.svg"
+                  alt="Erba Pura"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-23.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Xerjoff</span>
+                <h3>
+                  <button data-action="detail" data-id="23">Erba Pura</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 39.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Erba Pura">
+                  <button
+                    data-action="size"
+                    data-id="23"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="23"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="23"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="23">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="24"
+                aria-label="Ver Naxos Edp"
+              >
+                <img
+                  src="/assets/perfume-24.svg"
+                  alt="Naxos Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-24.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Xerjoff</span>
+                <h3>
+                  <button data-action="detail" data-id="24">Naxos Edp</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 39.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Naxos Edp">
+                  <button
+                    data-action="size"
+                    data-id="24"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="24"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="24"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="24">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="25"
+                aria-label="Ver Creed Aventus"
+              >
+                <img
+                  src="/assets/perfume-25.svg"
+                  alt="Creed Aventus"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-25.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Creed</span>
+                <h3>
+                  <button data-action="detail" data-id="25">
+                    Creed Aventus
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 61.75 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Creed Aventus">
+                  <button
+                    data-action="size"
+                    data-id="25"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="25"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="25"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="25">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="26"
+                aria-label="Ver Bleu De Chanel Edp"
+              >
+                <img
+                  src="/assets/perfume-26.svg"
+                  alt="Bleu De Chanel Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-26.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Chanel</span>
+                <h3>
+                  <button data-action="detail" data-id="26">
+                    Bleu De Chanel Edp
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 29.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Bleu De Chanel Edp"
+                >
+                  <button
+                    data-action="size"
+                    data-id="26"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="26"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="26"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="26">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="27"
+                aria-label="Ver Sauvage Elixir"
+              >
+                <img
+                  src="/assets/perfume-27.svg"
+                  alt="Sauvage Elixir"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-27.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Dior</span>
+                <h3>
+                  <button data-action="detail" data-id="27">
+                    Sauvage Elixir
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 42.25 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Sauvage Elixir">
+                  <button
+                    data-action="size"
+                    data-id="27"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="27"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="27"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="27">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="28"
+                aria-label="Ver Sauvage Edp"
+              >
+                <img
+                  src="/assets/perfume-28.svg"
+                  alt="Sauvage Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-28.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Dior</span>
+                <h3>
+                  <button data-action="detail" data-id="28">Sauvage Edp</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 25.35 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Sauvage Edp">
+                  <button
+                    data-action="size"
+                    data-id="28"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="28"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="28"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="28">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="29"
+                aria-label="Ver Light Blue Edt"
+              >
+                <img
+                  src="/assets/perfume-29.svg"
+                  alt="Light Blue Edt"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-29.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Dolce &amp; Gabbana</span>
+                <h3>
+                  <button data-action="detail" data-id="29">
+                    Light Blue Edt
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 19.50 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Light Blue Edt">
+                  <button
+                    data-action="size"
+                    data-id="29"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="29"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="29"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="29">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="30"
+                aria-label="Ver 212 Vip Black"
+              >
+                <img
+                  src="/assets/perfume-30.svg"
+                  alt="212 Vip Black"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-30.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Carolina Herrera</span>
+                <h3>
+                  <button data-action="detail" data-id="30">
+                    212 Vip Black
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de 212 Vip Black">
+                  <button
+                    data-action="size"
+                    data-id="30"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="30"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="30"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="30">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="31"
+                aria-label="Ver Eros Edp"
+              >
+                <img
+                  src="/assets/perfume-31.svg"
+                  alt="Eros Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-31.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Versace</span>
+                <h3>
+                  <button data-action="detail" data-id="31">Eros Edp</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 19.50 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Eros Edp">
+                  <button
+                    data-action="size"
+                    data-id="31"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="31"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="31"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="31">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="32"
+                aria-label="Ver Eros Flame Edp"
+              >
+                <img
+                  src="/assets/perfume-32.svg"
+                  alt="Eros Flame Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-32.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Versace</span>
+                <h3>
+                  <button data-action="detail" data-id="32">
+                    Eros Flame Edp
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 19.50 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Eros Flame Edp">
+                  <button
+                    data-action="size"
+                    data-id="32"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="32"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="32"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="32">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="33"
+                aria-label="Ver Club De Nuit Precieux I"
+              >
+                <img
+                  src="/assets/perfume-33.svg"
+                  alt="Club De Nuit Precieux I"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-33.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Armaf</span>
+                <h3>
+                  <button data-action="detail" data-id="33">
+                    Club De Nuit Precieux I
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 22.75 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Club De Nuit Precieux I"
+                >
+                  <button
+                    data-action="size"
+                    data-id="33"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="33"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="33"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="33">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="34"
+                aria-label="Ver 9Pm Night Out"
+              >
+                <img
+                  src="/assets/perfume-34.svg"
+                  alt="9Pm Night Out"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-34.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Afnan</span>
+                <h3>
+                  <button data-action="detail" data-id="34">
+                    9Pm Night Out
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de 9Pm Night Out">
+                  <button
+                    data-action="size"
+                    data-id="34"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="34"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="34"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="34">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="35"
+                aria-label="Ver Chapter 1"
+              >
+                <img
+                  src="/assets/perfume-35.svg"
+                  alt="Chapter 1"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-35.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">French Avenue</span>
+                <h3>
+                  <button data-action="detail" data-id="35">Chapter 1</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Chapter 1">
+                  <button
+                    data-action="size"
+                    data-id="35"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="35"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="35"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="35">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="36"
+                aria-label="Ver Royal Amber"
+              >
+                <img
+                  src="/assets/perfume-36.svg"
+                  alt="Royal Amber"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-36.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">French Avenue</span>
+                <h3>
+                  <button data-action="detail" data-id="36">Royal Amber</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Royal Amber">
+                  <button
+                    data-action="size"
+                    data-id="36"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="36"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="36"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="36">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="37"
+                aria-label="Ver Amber Oud Gold Edition"
+              >
+                <img
+                  src="/assets/perfume-37.svg"
+                  alt="Amber Oud Gold Edition"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-37.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Al Haramain</span>
+                <h3>
+                  <button data-action="detail" data-id="37">
+                    Amber Oud Gold Edition
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Amber Oud Gold Edition"
+                >
+                  <button
+                    data-action="size"
+                    data-id="37"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="37"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="37"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="37">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="38"
+                aria-label="Ver Amber Oud Aqua Dubai"
+              >
+                <img
+                  src="/assets/perfume-38.svg"
+                  alt="Amber Oud Aqua Dubai"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-38.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Al Haramain</span>
+                <h3>
+                  <button data-action="detail" data-id="38">
+                    Amber Oud Aqua Dubai
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Amber Oud Aqua Dubai"
+                >
+                  <button
+                    data-action="size"
+                    data-id="38"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="38"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="38"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="38">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="39"
+                aria-label="Ver Khamrah"
+              >
+                <img
+                  src="/assets/perfume-39.svg"
+                  alt="Khamrah"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-39.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Lattafa</span>
+                <h3>
+                  <button data-action="detail" data-id="39">Khamrah</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Khamrah">
+                  <button
+                    data-action="size"
+                    data-id="39"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="39"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="39"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="39">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="40"
+                aria-label="Ver Khamrah Qahwa"
+              >
+                <img
+                  src="/assets/perfume-40.svg"
+                  alt="Khamrah Qahwa"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-40.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Lattafa</span>
+                <h3>
+                  <button data-action="detail" data-id="40">
+                    Khamrah Qahwa
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Khamrah Qahwa">
+                  <button
+                    data-action="size"
+                    data-id="40"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="40"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="40"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="40">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="41"
+                aria-label="Ver Khamrah Waha"
+              >
+                <img
+                  src="/assets/perfume-41.svg"
+                  alt="Khamrah Waha"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-41.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Lattafa</span>
+                <h3>
+                  <button data-action="detail" data-id="41">
+                    Khamrah Waha
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Khamrah Waha">
+                  <button
+                    data-action="size"
+                    data-id="41"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="41"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="41"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="41">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="42"
+                aria-label="Ver Asad Black"
+              >
+                <img
+                  src="/assets/perfume-42.svg"
+                  alt="Asad Black"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-42.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Lattafa</span>
+                <h3>
+                  <button data-action="detail" data-id="42">Asad Black</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Asad Black">
+                  <button
+                    data-action="size"
+                    data-id="42"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="42"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="42"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="42">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="43"
+                aria-label="Ver Hawas Verde Rasasi"
+              >
+                <img
+                  src="/assets/perfume-43.svg"
+                  alt="Hawas Verde Rasasi"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-43.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Rasasi</span>
+                <h3>
+                  <button data-action="detail" data-id="43">
+                    Hawas Verde Rasasi
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Hawas Verde Rasasi"
+                >
+                  <button
+                    data-action="size"
+                    data-id="43"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="43"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="43"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="43">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="44"
+                aria-label="Ver Hawas Ice Rasasi"
+              >
+                <img
+                  src="/assets/perfume-44.svg"
+                  alt="Hawas Ice Rasasi"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-44.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Rasasi</span>
+                <h3>
+                  <button data-action="detail" data-id="44">
+                    Hawas Ice Rasasi
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Hawas Ice Rasasi"
+                >
+                  <button
+                    data-action="size"
+                    data-id="44"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="44"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="44"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="44">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="45"
+                aria-label="Ver Hawas Fire Rasasi"
+              >
+                <img
+                  src="/assets/perfume-45.svg"
+                  alt="Hawas Fire Rasasi"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-45.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Rasasi</span>
+                <h3>
+                  <button data-action="detail" data-id="45">
+                    Hawas Fire Rasasi
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Hawas Fire Rasasi"
+                >
+                  <button
+                    data-action="size"
+                    data-id="45"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="45"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="45"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="45">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="46"
+                aria-label="Ver Hawas Tropical Rasasi"
+              >
+                <img
+                  src="/assets/perfume-46.svg"
+                  alt="Hawas Tropical Rasasi"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-46.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Rasasi</span>
+                <h3>
+                  <button data-action="detail" data-id="46">
+                    Hawas Tropical Rasasi
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 16.25 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Hawas Tropical Rasasi"
+                >
+                  <button
+                    data-action="size"
+                    data-id="46"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="46"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="46"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="46">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="47"
+                aria-label="Ver 9Pm Edp"
+              >
+                <img
+                  src="/assets/perfume-47.svg"
+                  alt="9Pm Edp"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-47.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Afnan</span>
+                <h3>
+                  <button data-action="detail" data-id="47">9Pm Edp</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de 9Pm Edp">
+                  <button
+                    data-action="size"
+                    data-id="47"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="47"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="47"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="47">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="48"
+                aria-label="Ver 9Am Dive"
+              >
+                <img
+                  src="/assets/perfume-48.svg"
+                  alt="9Am Dive"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-48.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Afnan</span>
+                <h3>
+                  <button data-action="detail" data-id="48">9Am Dive</button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de 9Am Dive">
+                  <button
+                    data-action="size"
+                    data-id="48"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="48"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="48"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="48">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="49"
+                aria-label="Ver Odyssey Aqua"
+              >
+                <img
+                  src="/assets/perfume-49.svg"
+                  alt="Odyssey Aqua"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-49.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Armaf</span>
+                <h3>
+                  <button data-action="detail" data-id="49">
+                    Odyssey Aqua
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div class="size-options" aria-label="Tamaño de Odyssey Aqua">
+                  <button
+                    data-action="size"
+                    data-id="49"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="49"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="49"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="49">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+            <article class="card">
+              <button
+                class="card-image"
+                data-action="detail"
+                data-id="50"
+                aria-label="Ver Odyssey Mandarin Sky"
+              >
+                <img
+                  src="/assets/perfume-50.svg"
+                  alt="Odyssey Mandarin Sky"
+                  loading="lazy"
+                  width="300"
+                  height="330"
+                  th:src="@{/assets/perfume-50.svg}"
+                />
+                <span class="quick-view"
+                  ><svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Ver perfume</span
+                >
+              </button>
+              <div class="card-info">
+                <span class="brand">Armaf</span>
+                <h3>
+                  <button data-action="detail" data-id="50">
+                    Odyssey Mandarin Sky
+                  </button>
+                </h3>
+                <div class="card-price">
+                  <strong>S/ 13.00 <small>PEN</small></strong>
+                </div>
+                <div
+                  class="size-options"
+                  aria-label="Tamaño de Odyssey Mandarin Sky"
+                >
+                  <button
+                    data-action="size"
+                    data-id="50"
+                    data-size="3"
+                    aria-pressed="true"
+                    class="selected"
+                    aria-label="3 ml"
+                  >
+                    3 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="50"
+                    data-size="5"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="5 ml"
+                  >
+                    5 ml</button
+                  ><button
+                    data-action="size"
+                    data-id="50"
+                    data-size="10"
+                    aria-pressed="false"
+                    class=" "
+                    aria-label="10 ml"
+                  >
+                    10 ml
+                  </button>
+                </div>
+                <button class="card-add" data-action="add" data-id="50">
+                  <svg
+                    class="ui-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 5v14M5 12h14"></path></svg
+                  >Añadir al carrito
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

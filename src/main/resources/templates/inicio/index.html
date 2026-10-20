@@ -1,0 +1,1947 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Inicio')}">
+    <title>Inicio · Decanly</title>
+  </head>
+  <body data-route="inicio" data-page="inicio/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section
+        class="showcase"
+        aria-roledescription="carrusel"
+        aria-label="Fragancias destacadas"
+      >
+        <h1 class="sr-only">
+          Descubre tus perfumes favoritos en decants de 3, 5 y 10 ml.
+        </h1>
+        <div
+          class="carousel-viewport"
+          tabindex="0"
+          aria-label="Explora las fragancias con las teclas izquierda y derecha"
+        >
+          <div
+            class="carousel-track"
+            style="transition: none; transform: translateX(-100%)"
+          >
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="1 de 3: Valentino"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Valentino"
+                data-action="brand"
+                data-brand="Valentino"
+                aria-label="Descubrir perfumes de Valentino"
+                th:href="@{/catalogo?marca=Valentino}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="74 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Valentino</span><strong>Una noche en Roma</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="2 de 3: Xerjoff"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Xerjoff"
+                data-action="brand"
+                data-brand="Xerjoff"
+                aria-label="Descubrir perfumes de Xerjoff"
+                th:href="@{/catalogo?marca=Xerjoff}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="458 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Xerjoff</span><strong>Un viaje al Mediterráneo</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="3 de 3: Jean Paul Gaultier"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Jean%20Paul%20Gaultier"
+                data-action="brand"
+                data-brand="Jean Paul Gaultier"
+                aria-label="Descubrir perfumes de Jean Paul Gaultier"
+                th:href="@{/catalogo?marca=Jean%20Paul%20Gaultier}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="843 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Jean Paul Gaultier</span
+                  ><strong>El aroma del atardecer</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="1 de 3: Valentino"
+              aria-hidden="false"
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Valentino"
+                data-action="brand"
+                data-brand="Valentino"
+                aria-label="Descubrir perfumes de Valentino"
+                th:href="@{/catalogo?marca=Valentino}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="74 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Valentino</span><strong>Una noche en Roma</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="2 de 3: Xerjoff"
+              aria-hidden="false"
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Xerjoff"
+                data-action="brand"
+                data-brand="Xerjoff"
+                aria-label="Descubrir perfumes de Xerjoff"
+                th:href="@{/catalogo?marca=Xerjoff}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="458 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Xerjoff</span><strong>Un viaje al Mediterráneo</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="3 de 3: Jean Paul Gaultier"
+              aria-hidden="false"
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Jean%20Paul%20Gaultier"
+                data-action="brand"
+                data-brand="Jean Paul Gaultier"
+                aria-label="Descubrir perfumes de Jean Paul Gaultier"
+                th:href="@{/catalogo?marca=Jean%20Paul%20Gaultier}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="843 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Jean Paul Gaultier</span
+                  ><strong>El aroma del atardecer</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="1 de 3: Valentino"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Valentino"
+                data-action="brand"
+                data-brand="Valentino"
+                aria-label="Descubrir perfumes de Valentino"
+                th:href="@{/catalogo?marca=Valentino}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="74 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Valentino</span><strong>Una noche en Roma</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="2 de 3: Xerjoff"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Xerjoff"
+                data-action="brand"
+                data-brand="Xerjoff"
+                aria-label="Descubrir perfumes de Xerjoff"
+                th:href="@{/catalogo?marca=Xerjoff}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="458 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Xerjoff</span><strong>Un viaje al Mediterráneo</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+            <article
+              class="banner-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label="3 de 3: Jean Paul Gaultier"
+              aria-hidden="true"
+              inert=""
+            >
+              <a
+                class="banner-link"
+                href="/catalogo?marca=Jean%20Paul%20Gaultier"
+                data-action="brand"
+                data-brand="Jean Paul Gaultier"
+                aria-label="Descubrir perfumes de Jean Paul Gaultier"
+                th:href="@{/catalogo?marca=Jean%20Paul%20Gaultier}"
+              >
+                <svg
+                  class="banner-image"
+                  viewBox="843 118 383 490"
+                  preserveAspectRatio="xMidYMid slice"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <image
+                    href="/assets/banner-reference.png"
+                    width="1300"
+                    height="731"
+                    th:attr="href=@{/assets/banner-reference.png}"
+                  ></image>
+                </svg>
+                <div class="banner-caption">
+                  <span>Jean Paul Gaultier</span
+                  ><strong>El aroma del atardecer</strong
+                  ><span class="banner-cta">Descubrir fragancias</span>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <span class="carousel-hint">Tu próxima fragancia te espera</span>
+          <div class="carousel-dots" aria-label="Elegir fragancia">
+            <button
+              type="button"
+              data-slide="0"
+              aria-label="Mostrar Valentino"
+              aria-pressed="true"
+            >
+              <span></span></button
+            ><button
+              type="button"
+              data-slide="1"
+              aria-label="Mostrar Xerjoff"
+              aria-pressed="false"
+            >
+              <span></span></button
+            ><button
+              type="button"
+              data-slide="2"
+              aria-label="Mostrar Jean Paul Gaultier"
+              aria-pressed="false"
+            >
+              <span></span>
+            </button>
+          </div>
+        </div>
+        <span class="sr-only carousel-status" aria-live="off"
+          >Valentino, 1 de 3</span
+        >
+      </section>
+      <section class="brand-carousel section" aria-label="Carrusel de marcas">
+        <div class="brand-caption">
+          <span>EL UNIVERSO DE TUS FAVORITOS</span>
+        </div>
+        <div class="brand-rail" tabindex="0" aria-label="Explorar marcas">
+          <a
+            href="/catalogo?marca=Valentino"
+            data-action="brand"
+            data-brand="Valentino"
+            aria-label="Ver perfumes de Valentino"
+            th:href="@{/catalogo?marca=Valentino}"
+            ><img
+              src="/assets/brands/valentino.svg"
+              alt="Valentino"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/valentino.svg}" /></a
+          ><a
+            href="/catalogo?marca=Yves%20Saint%20Laurent"
+            data-action="brand"
+            data-brand="Yves Saint Laurent"
+            aria-label="Ver perfumes de Yves Saint Laurent"
+            th:href="@{/catalogo?marca=Yves%20Saint%20Laurent}"
+            ><img
+              src="/assets/brands/ysl.svg"
+              alt="Yves Saint Laurent"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/ysl.svg}" /></a
+          ><a
+            href="/catalogo?marca=Versace"
+            data-action="brand"
+            data-brand="Versace"
+            aria-label="Ver perfumes de Versace"
+            th:href="@{/catalogo?marca=Versace}"
+            ><img
+              src="/assets/brands/versace.svg"
+              alt="Versace"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/versace.svg}" /></a
+          ><a
+            href="/catalogo?marca=Jean%20Paul%20Gaultier"
+            data-action="brand"
+            data-brand="Jean Paul Gaultier"
+            aria-label="Ver perfumes de Jean Paul Gaultier"
+            th:href="@{/catalogo?marca=Jean%20Paul%20Gaultier}"
+            ><img
+              src="/assets/brands/jean-paul-gaultier.svg"
+              alt="Jean Paul Gaultier"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/jean-paul-gaultier.svg}" /></a
+          ><a
+            href="/catalogo?marca=Dior"
+            data-action="brand"
+            data-brand="Dior"
+            aria-label="Ver perfumes de Dior"
+            th:href="@{/catalogo?marca=Dior}"
+            ><img
+              src="/assets/brands/dior.svg"
+              alt="Dior"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/dior.svg}" /></a
+          ><a
+            href="/catalogo?marca=Valentino"
+            data-action="brand"
+            data-brand="Valentino"
+            aria-label="Ver perfumes de Valentino"
+            th:href="@{/catalogo?marca=Valentino}"
+            ><img
+              src="/assets/brands/valentino.svg"
+              alt="Valentino"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/valentino.svg}" /></a
+          ><a
+            href="/catalogo?marca=Yves%20Saint%20Laurent"
+            data-action="brand"
+            data-brand="Yves Saint Laurent"
+            aria-label="Ver perfumes de Yves Saint Laurent"
+            th:href="@{/catalogo?marca=Yves%20Saint%20Laurent}"
+            ><img
+              src="/assets/brands/ysl.svg"
+              alt="Yves Saint Laurent"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/ysl.svg}" /></a
+          ><a
+            href="/catalogo?marca=Versace"
+            data-action="brand"
+            data-brand="Versace"
+            aria-label="Ver perfumes de Versace"
+            th:href="@{/catalogo?marca=Versace}"
+            ><img
+              src="/assets/brands/versace.svg"
+              alt="Versace"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/versace.svg}" /></a
+          ><a
+            href="/catalogo?marca=Jean%20Paul%20Gaultier"
+            data-action="brand"
+            data-brand="Jean Paul Gaultier"
+            aria-label="Ver perfumes de Jean Paul Gaultier"
+            th:href="@{/catalogo?marca=Jean%20Paul%20Gaultier}"
+            ><img
+              src="/assets/brands/jean-paul-gaultier.svg"
+              alt="Jean Paul Gaultier"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/jean-paul-gaultier.svg}" /></a
+          ><a
+            href="/catalogo?marca=Dior"
+            data-action="brand"
+            data-brand="Dior"
+            aria-label="Ver perfumes de Dior"
+            th:href="@{/catalogo?marca=Dior}"
+            ><img
+              src="/assets/brands/dior.svg"
+              alt="Dior"
+              loading="lazy"
+              width="150"
+              height="64"
+              th:src="@{/assets/brands/dior.svg}"
+          /></a>
+        </div>
+      </section>
+      <section class="section best-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Encuentra tu nueva obsesión</span>
+            <h2>Más vendidos</h2>
+          </div>
+          <div class="section-controls">
+            <a href="/catalogo" class="text-link" th:href="@{/catalogo}"
+              >Ver todos
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 12h16m-6-6 6 6-6 6"></path></svg></a
+            ><button
+              class="circle-btn"
+              data-scroll-target="best-sellers"
+              data-direction="-1"
+              aria-label="Perfumes anteriores"
+            >
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m14 6-6 6 6 6"></path>
+              </svg></button
+            ><button
+              class="circle-btn"
+              data-scroll-target="best-sellers"
+              data-direction="1"
+              aria-label="Más perfumes"
+            >
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="m10 6 6 6-6 6"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="product-rail" id="best-sellers">
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="25"
+              aria-label="Ver Creed Aventus"
+            >
+              <img
+                src="/assets/perfume-25.svg"
+                alt="Creed Aventus"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-25.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Creed</span>
+              <h3>
+                <button data-action="detail" data-id="25">Creed Aventus</button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 61.75 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Creed Aventus">
+                <button
+                  data-action="size"
+                  data-id="25"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="25"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="25"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="25">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="3"
+              aria-label="Ver Power Of You"
+            >
+              <img
+                src="/assets/perfume-3.svg"
+                alt="Power Of You"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-3.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Emporio Armani</span>
+              <h3>
+                <button data-action="detail" data-id="3">Power Of You</button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 29.25 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Power Of You">
+                <button
+                  data-action="size"
+                  data-id="3"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="3"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="3"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="3">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="14"
+              aria-label="Ver Paradigme Edp"
+            >
+              <img
+                src="/assets/perfume-14.svg"
+                alt="Paradigme Edp"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-14.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Prada</span>
+              <h3>
+                <button data-action="detail" data-id="14">Paradigme Edp</button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Paradigme Edp">
+                <button
+                  data-action="size"
+                  data-id="14"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="14"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="14"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="14">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="11"
+              aria-label="Ver Born In Roma Intense"
+            >
+              <img
+                src="/assets/perfume-11.svg"
+                alt="Born In Roma Intense"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-11.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Valentino</span>
+              <h3>
+                <button data-action="detail" data-id="11">
+                  Born In Roma Intense
+                </button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div
+                class="size-options"
+                aria-label="Tamaño de Born In Roma Intense"
+              >
+                <button
+                  data-action="size"
+                  data-id="11"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="11"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="11"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="11">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="1"
+              aria-label="Ver Myslf Le Parfum"
+            >
+              <img
+                src="/assets/perfume-1.svg"
+                alt="Myslf Le Parfum"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-1.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Yves Saint Laurent</span>
+              <h3>
+                <button data-action="detail" data-id="1">
+                  Myslf Le Parfum
+                </button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Myslf Le Parfum">
+                <button
+                  data-action="size"
+                  data-id="1"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="1"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="1"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="1">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="18"
+              aria-label="Ver Paradise Garden"
+            >
+              <img
+                src="/assets/perfume-18.svg"
+                alt="Paradise Garden"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-18.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Jean Paul Gaultier</span>
+              <h3>
+                <button data-action="detail" data-id="18">
+                  Paradise Garden
+                </button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Paradise Garden">
+                <button
+                  data-action="size"
+                  data-id="18"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="18"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="18"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="18">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="9"
+              aria-label="Ver Valentino Coral Fantasy"
+            >
+              <img
+                src="/assets/perfume-9.svg"
+                alt="Valentino Coral Fantasy"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-9.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Valentino</span>
+              <h3>
+                <button data-action="detail" data-id="9">
+                  Valentino Coral Fantasy
+                </button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div
+                class="size-options"
+                aria-label="Tamaño de Valentino Coral Fantasy"
+              >
+                <button
+                  data-action="size"
+                  data-id="9"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="9"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="9"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="9">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+          <article class="card">
+            <button
+              class="card-image"
+              data-action="detail"
+              data-id="15"
+              aria-label="Ver Le Male Elixir"
+            >
+              <img
+                src="/assets/perfume-15.svg"
+                alt="Le Male Elixir"
+                loading="lazy"
+                width="300"
+                height="330"
+                th:src="@{/assets/perfume-15.svg}"
+              />
+              <span class="quick-view"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver perfume</span
+              >
+            </button>
+            <div class="card-info">
+              <span class="brand">Jean Paul Gaultier</span>
+              <h3>
+                <button data-action="detail" data-id="15">
+                  Le Male Elixir
+                </button>
+              </h3>
+              <div class="card-price">
+                <strong>S/ 25.35 <small>PEN</small></strong>
+              </div>
+              <div class="size-options" aria-label="Tamaño de Le Male Elixir">
+                <button
+                  data-action="size"
+                  data-id="15"
+                  data-size="3"
+                  aria-pressed="true"
+                  class="selected"
+                  aria-label="3 ml"
+                >
+                  3 ml</button
+                ><button
+                  data-action="size"
+                  data-id="15"
+                  data-size="5"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="5 ml"
+                >
+                  5 ml</button
+                ><button
+                  data-action="size"
+                  data-id="15"
+                  data-size="10"
+                  aria-pressed="false"
+                  class=" "
+                  aria-label="10 ml"
+                >
+                  10 ml
+                </button>
+              </div>
+              <button class="card-add" data-action="add" data-id="15">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path></svg
+                >Añadir al carrito
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section
+        class="section benefit-grid"
+        aria-label="Por qué elegir un decant"
+      >
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M5 7h14l1 14H4L5 7Zm4 1V5a3 3 0 0 1 6 0v3"></path>
+          </svg>
+          <h3>Prueba más por menos</h3>
+          <p>
+            Conoce varias fragancias sin comprar un frasco completo. Encuentra
+            la que realmente va contigo.
+          </p>
+        </article>
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z"></path>
+            <path d="m8 12 3 3 5-6"></path>
+          </svg>
+          <h3>Pequeños. Listos para llevar.</h3>
+          <p>
+            Para tu mochila, una escapada o el día a día. Tu perfume favorito
+            siempre a mano.
+          </p>
+        </article>
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+            <path d="M5 12v9h14v-9M12 8v13"></path>
+            <path
+              d="M12 8C4 8 5 1 9 3c2 1 3 5 3 5Zm0 0c8 0 7-7 3-5-2 1-3 5-3 5Z"
+            ></path>
+          </svg>
+          <h3>Un aroma para cada versión de ti</h3>
+          <p>
+            Crea una colección para tus clases, el trabajo, tus citas y todos
+            esos planes por venir.
+          </p>
+        </article>
+      </section>
+      <section class="section categories-section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Sigue tu intuición</span>
+            <h2>¿A qué quieres oler hoy?</h2>
+          </div>
+        </div>
+        <div class="category-grid desktop-categories">
+          <a
+            class="category-card"
+            href="/catalogo?estilo=Verano"
+            data-action="category"
+            data-category="Verano"
+            th:href="@{/catalogo?estilo=Verano}"
+            ><svg
+              class="reference-photo"
+              viewBox="118 329 245 277"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Verano"
+            >
+              <image
+                href="/assets/references/categories.png"
+                width="1300"
+                height="725"
+                th:attr="href=@{/assets/references/categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Verano</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Invierno"
+            data-action="category"
+            data-category="Invierno"
+            th:href="@{/catalogo?estilo=Invierno}"
+            ><svg
+              class="reference-photo"
+              viewBox="389 329 245 277"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Invierno"
+            >
+              <image
+                href="/assets/references/categories.png"
+                width="1300"
+                height="725"
+                th:attr="href=@{/assets/references/categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Invierno</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Dulce"
+            data-action="category"
+            data-category="Dulce"
+            th:href="@{/catalogo?estilo=Dulce}"
+            ><svg
+              class="reference-photo"
+              viewBox="660 329 245 277"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Dulce"
+            >
+              <image
+                href="/assets/references/categories.png"
+                width="1300"
+                height="725"
+                th:attr="href=@{/assets/references/categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Dulce</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Amaderado"
+            data-action="category"
+            data-category="Amaderado"
+            th:href="@{/catalogo?estilo=Amaderado}"
+            ><svg
+              class="reference-photo"
+              viewBox="933 329 246 277"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Amaderado"
+            >
+              <image
+                href="/assets/references/categories.png"
+                width="1300"
+                height="725"
+                th:attr="href=@{/assets/references/categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Amaderado</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div
+          ></a>
+        </div>
+        <div class="category-grid mobile-categories">
+          <a
+            class="category-card"
+            href="/catalogo?estilo=Verano"
+            data-action="category"
+            data-category="Verano"
+            th:href="@{/catalogo?estilo=Verano}"
+            ><svg
+              class="reference-photo"
+              viewBox="24 11 96 84"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Verano"
+            >
+              <image
+                href="/assets/references/mobile-categories.png"
+                width="269"
+                height="504"
+                th:attr="href=@{/assets/references/mobile-categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Verano</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Limpio"
+            data-action="category"
+            data-category="Limpio"
+            th:href="@{/catalogo?estilo=Limpio}"
+            ><svg
+              class="reference-photo"
+              viewBox="127 11 96 84"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Limpio"
+            >
+              <image
+                href="/assets/references/mobile-categories.png"
+                width="269"
+                height="504"
+                th:attr="href=@{/assets/references/mobile-categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Limpio</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Floral"
+            data-action="category"
+            data-category="Floral"
+            th:href="@{/catalogo?estilo=Floral}"
+            ><svg
+              class="reference-photo"
+              viewBox="24 139 96 75"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Floral"
+            >
+              <image
+                href="/assets/references/mobile-categories.png"
+                width="269"
+                height="504"
+                th:attr="href=@{/assets/references/mobile-categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Floral</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div></a
+          ><a
+            class="category-card"
+            href="/catalogo?estilo=Amaderado"
+            data-action="category"
+            data-category="Amaderado"
+            th:href="@{/catalogo?estilo=Amaderado}"
+            ><svg
+              class="reference-photo"
+              viewBox="127 139 96 75"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Inspiración Amaderado"
+            >
+              <image
+                href="/assets/references/mobile-categories.png"
+                width="269"
+                height="504"
+                th:attr="href=@{/assets/references/mobile-categories.png}"
+              ></image>
+            </svg>
+            <div>
+              <h3>Amaderado</h3>
+              <span
+                >DESCUBRIR
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+              ></span></div
+          ></a>
+        </div>
+      </section>
+      <section class="section collection-section">
+        <div class="collection-copy">
+          <span class="eyebrow">Colección destacada</span>
+          <h2 class="collection-desktop-title">
+            Descubre una<br />nueva forma de<br />llevar tu perfume.
+          </h2>
+          <h2 class="collection-mobile-title">
+            No vuelvas a<br />llevar el mismo<br />aroma dos veces.
+          </h2>
+          <p>
+            Perfumes que siempre quisiste probar, en formatos de 3, 5 y 10 ml.
+            Encuentra tus favoritos y lleva contigo solo lo que necesitas.
+          </p>
+          <a class="btn white" href="/catalogo" th:href="@{/catalogo}"
+            >Ver la colección
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+          ></a>
+        </div>
+        <div class="collection-art">
+          <svg
+            class="reference-photo"
+            viewBox="625 29 374 403"
+            preserveAspectRatio="xMidYMid slice"
+            role="img"
+            aria-label="Creed Aventus junto a un decant sobre piedra natural"
+          >
+            <image
+              href="/assets/references/collection.png"
+              width="1097"
+              height="617"
+              th:attr="href=@{/assets/references/collection.png}"
+            ></image>
+          </svg>
+        </div>
+      </section>
+      <section class="section home-packs">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Más aromas. Más posibilidades.</span>
+            <h2>Juntos, mucho mejor.</h2>
+          </div>
+          <a href="/promociones" class="text-link" th:href="@{/promociones}"
+            >Ver los packs
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+          ></a>
+        </div>
+        <div class="promo-grid">
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-8.svg"
+                alt="Aqua Di Gio Profondo"
+                loading="lazy"
+                th:src="@{/assets/perfume-8.svg}"
+              /><img
+                src="/assets/perfume-31.svg"
+                alt="Eros Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-31.svg}"
+              /><img
+                src="/assets/perfume-38.svg"
+                alt="Amber Oud Aqua Dubai"
+                loading="lazy"
+                th:src="@{/assets/perfume-38.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Frescura diaria</h3>
+            <p class="promo-description">
+              Aromas frescos para el trabajo, las clases y tus salidas.
+            </p>
+            <div class="promo-price">
+              <del>S/ 90.00</del><strong>S/ 81.00 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="1"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="1"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="1"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Aqua Di Gio Profondo <span>1 × 5 ml</span></li>
+                <li>Eros Edp <span>1 × 5 ml</span></li>
+                <li>Amber Oud Aqua Dubai <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="1">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="1">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="1">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-15.svg"
+                alt="Le Male Elixir"
+                loading="lazy"
+                th:src="@{/assets/perfume-15.svg}"
+              /><img
+                src="/assets/perfume-30.svg"
+                alt="212 Vip Black"
+                loading="lazy"
+                th:src="@{/assets/perfume-30.svg}"
+              /><img
+                src="/assets/perfume-21.svg"
+                alt="The Most Wanted Intense"
+                loading="lazy"
+                th:src="@{/assets/perfume-21.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Noche especial</h3>
+            <p class="promo-description">
+              Perfumes intensos para una cita o una ocasión especial.
+            </p>
+            <div class="promo-price">
+              <del>S/ 109.00</del><strong>S/ 98.10 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="2"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="2"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="2"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Le Male Elixir <span>1 × 5 ml</span></li>
+                <li>212 Vip Black <span>1 × 5 ml</span></li>
+                <li>The Most Wanted Intense <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="2">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="2">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="2">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-39.svg"
+                alt="Khamrah"
+                loading="lazy"
+                th:src="@{/assets/perfume-39.svg}"
+              /><img
+                src="/assets/perfume-49.svg"
+                alt="Odyssey Aqua"
+                loading="lazy"
+                th:src="@{/assets/perfume-49.svg}"
+              /><img
+                src="/assets/perfume-50.svg"
+                alt="Odyssey Mandarin Sky"
+                loading="lazy"
+                th:src="@{/assets/perfume-50.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Mi primer pack</h3>
+            <p class="promo-description">
+              Tres perfumes para empezar a descubrir tus favoritos.
+            </p>
+            <div class="promo-price">
+              <del>S/ 60.00</del><strong>S/ 54.00 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="3"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="3"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="3"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Khamrah <span>1 × 5 ml</span></li>
+                <li>Odyssey Aqua <span>1 × 5 ml</span></li>
+                <li>Odyssey Mandarin Sky <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="3">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="3">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="3">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+        </div>
+        <div class="custom-pack-link">
+          <span
+            >¿Prefieres elegir tú? Mezcla tus perfumes y tamaños
+            favoritos.</span
+          ><a class="text-link" href="/packs" th:href="@{/packs}"
+            >Arma tu pack
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+          ></a>
+        </div>
+      </section>
+      <section class="section service-grid" aria-label="Atención y entregas">
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4 13v-1a8 8 0 0 1 16 0v1M20 17v1a3 3 0 0 1-3 3h-4"></path>
+            <rect x="2" y="11" width="4" height="7" rx="2"></rect>
+            <rect x="18" y="11" width="4" height="7" rx="2"></rect>
+          </svg>
+          <div>
+            <h3>Te ayudamos a elegir</h3>
+            <p>Asesoría personalizada por WhatsApp.</p>
+          </div>
+        </article>
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M3 5h11v12H3V5Zm11 5h4l3 4v3h-7"></path>
+            <circle cx="7" cy="18" r="2"></circle>
+            <circle cx="17" cy="18" r="2"></circle>
+          </svg>
+          <div>
+            <h3>De nuestra tienda a tu puerta</h3>
+            <p>Coordinamos envíos a todo el Perú.</p>
+          </div>
+        </article>
+        <article>
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="6" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 14-4v3m4 6h-6v4h6"></path>
+            <path d="M17 14h.01"></path>
+          </svg>
+          <div>
+            <h3>Descubre más, gasta menos</h3>
+            <p>Elige tu tamaño y aprovecha nuestros packs.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

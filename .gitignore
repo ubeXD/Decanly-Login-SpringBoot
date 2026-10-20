@@ -1,0 +1,10 @@
+target/
+node_modules/
+.env
+*.log
+.settings/*.prefs.bak
+src/main/resources/application.properties
+.settings/
+.classpath
+.project
+.factorypath

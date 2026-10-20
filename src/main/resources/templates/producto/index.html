@@ -1,0 +1,3013 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Productos y stock')}">
+    <title>Productos y stock · Decanly</title>
+  </head>
+  <body data-route="cuenta" data-page="producto/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="admin-shell">
+        <aside class="admin-sidebar">
+          <span class="admin-label">DECANLY STUDIO</span>
+          <p>Tu colección,<br />bajo control.</p>
+          <nav aria-label="Secciones de administración">
+            <button
+              class="selected"
+              data-action="admin-tab"
+              data-value="products"
+            >
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect></svg
+              ><span>Productos y stock</span></button
+            ><button class="" data-action="admin-tab" data-value="promos">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 3h8l10 10-8 8L3 11V3Z"></path>
+                <circle cx="7" cy="7" r="1"></circle></svg
+              ><span>Promociones y packs</span>
+            </button>
+            <button type="button" data-action="admin-tab" data-value="orders">
+              Pedidos
+            </button>
+          </nav>
+          <a href="/" th:href="@{/}"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Ver tienda</a
+          ><button data-action="logout">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M9 4H4v16h5M10 12h11m-5-5 5 5-5 5"></path>
+            </svg>
+            Cerrar sesión
+          </button>
+        </aside>
+        <div class="admin-main">
+          <div class="admin-heading">
+            <div>
+              <span class="eyebrow">Panel de administración</span>
+              <h1>Hola, administrador.</h1>
+              <p>Todo lo que necesitas para gestionar Decanly.</p>
+            </div>
+          </div>
+          <div class="admin-stats">
+            <div class="stat">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M9 3h6v4H9V3Zm0 4v3H7v11h10V10h-2V7M7 13h10"
+                ></path></svg
+              ><strong>50</strong><span>Perfumes en colección</span>
+            </div>
+            <div class="stat">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="m12 3 9 5v9l-9 5-9-5V8l9-5Zm0 10 9-5M3 8l9 5v9M7.5 5.5l9 5v5"
+                ></path></svg
+              ><strong>50</strong><span>Con stock disponible</span>
+            </div>
+            <div class="stat">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+                <path d="M5 12v9h14v-9M12 8v13"></path>
+                <path
+                  d="M12 8C4 8 5 1 9 3c2 1 3 5 3 5Zm0 0c8 0 7-7 3-5-2 1-3 5-3 5Z"
+                ></path></svg
+              ><strong>9</strong><span>Packs publicados</span>
+            </div>
+            <div class="stat">
+              <svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 3h8l10 10-8 8L3 11V3Z"></path>
+                <circle cx="7" cy="7" r="1"></circle></svg
+              ><strong>0</strong><span>Ofertas de perfumes</span>
+            </div>
+          </div>
+
+          <div id="admin-content">
+            <div class="admin-section-title">
+              <div>
+                <h2>Productos y stock</h2>
+                <p>Precios y unidades por cada presentación.</p>
+              </div>
+              <button class="btn" data-action="new-product">
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Nuevo producto
+              </button>
+            </div>
+            <div class="admin-toolbar">
+              <label class="admin-search-label"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                  <path d="m16 16 5 5"></path></svg
+                ><input
+                  class="field"
+                  id="admin-search"
+                  placeholder="Busca por perfume o marca…"
+                  type="search"
+                  aria-label="Buscar producto para editar" /></label
+              ><span class="hint">50 perfumes · 3 tamaños</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>PERFUME</th>
+                    <th>PRECIOS · 3 / 5 / 10 ML</th>
+                    <th>STOCK · 3 / 5 / 10 ML</th>
+                    <th>OFERTA</th>
+                    <th>ACCIONES</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-rows">
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-1.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-1.svg}"
+                        />
+                        <div>
+                          <b>Myslf Le Parfum</b
+                          ><small>Yves Saint Laurent</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="1"
+                          aria-label="Editar Myslf Le Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="1"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-2.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-2.svg}"
+                        />
+                        <div>
+                          <b>Y Eau De Parfum</b
+                          ><small>Yves Saint Laurent</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="2"
+                          aria-label="Editar Y Eau De Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="2"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-3.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-3.svg}"
+                        />
+                        <div>
+                          <b>Power Of You</b><small>Emporio Armani</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 29.25</span> /
+                      <span class="table-price">S/ 45.00</span> /
+                      <span class="table-price">S/ 75.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="3"
+                          aria-label="Editar Power Of You"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="3"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-4.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-4.svg}"
+                        />
+                        <div>
+                          <b>Invictus Victory Elixir</b><small>Rabanne</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 65.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="4"
+                          aria-label="Editar Invictus Victory Elixir"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="4"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-5.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-5.svg}"
+                        />
+                        <div>
+                          <b>Stronger Powerfully</b
+                          ><small>Emporio Armani</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="5"
+                          aria-label="Editar Stronger Powerfully"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="5"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-6.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-6.svg}"
+                        />
+                        <div>
+                          <b>Stronger Intensely</b><small>Emporio Armani</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 65.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="6"
+                          aria-label="Editar Stronger Intensely"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="6"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-7.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-7.svg}"
+                        />
+                        <div>
+                          <b>Aqua Di Gio Parfum</b><small>Giorgio Armani</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 65.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="7"
+                          aria-label="Editar Aqua Di Gio Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="7"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-8.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-8.svg}"
+                        />
+                        <div>
+                          <b>Aqua Di Gio Profondo</b
+                          ><small>Giorgio Armani</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="8"
+                          aria-label="Editar Aqua Di Gio Profondo"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="8"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-9.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-9.svg}"
+                        />
+                        <div>
+                          <b>Valentino Coral Fantasy</b><small>Valentino</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="9"
+                          aria-label="Editar Valentino Coral Fantasy"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="9"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-10.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-10.svg}"
+                        />
+                        <div>
+                          <b>Valentino Melancholia</b><small>Valentino</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="10"
+                          aria-label="Editar Valentino Melancholia"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="10"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-11.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-11.svg}"
+                        />
+                        <div>
+                          <b>Born In Roma Intense</b><small>Valentino</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="11"
+                          aria-label="Editar Born In Roma Intense"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="11"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-12.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-12.svg}"
+                        />
+                        <div>
+                          <b>Born In Roma Extradose</b><small>Valentino</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="12"
+                          aria-label="Editar Born In Roma Extradose"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="12"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-13.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-13.svg}"
+                        />
+                        <div>
+                          <b>Luna Rossa Carbón Edp</b><small>Prada</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="13"
+                          aria-label="Editar Luna Rossa Carbón Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="13"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-14.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-14.svg}"
+                        />
+                        <div><b>Paradigme Edp</b><small>Prada</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="14"
+                          aria-label="Editar Paradigme Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="14"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-15.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-15.svg}"
+                        />
+                        <div>
+                          <b>Le Male Elixir</b><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="15"
+                          aria-label="Editar Le Male Elixir"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="15"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-16.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-16.svg}"
+                        />
+                        <div>
+                          <b>Le Male Le Parfum</b
+                          ><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="16"
+                          aria-label="Editar Le Male Le Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="16"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-17.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-17.svg}"
+                        />
+                        <div>
+                          <b>Le Beau Le Parfum</b
+                          ><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="17"
+                          aria-label="Editar Le Beau Le Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="17"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-18.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-18.svg}"
+                        />
+                        <div>
+                          <b>Paradise Garden</b
+                          ><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="18"
+                          aria-label="Editar Paradise Garden"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="18"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-19.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-19.svg}"
+                        />
+                        <div>
+                          <b>Scandal Absolu</b><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="19"
+                          aria-label="Editar Scandal Absolu"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="19"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-20.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-20.svg}"
+                        />
+                        <div>
+                          <b>Scandal Le Parfum</b
+                          ><small>Jean Paul Gaultier</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="20"
+                          aria-label="Editar Scandal Le Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="20"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-21.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-21.svg}"
+                        />
+                        <div>
+                          <b>The Most Wanted Intense</b><small>Azzaro</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="21"
+                          aria-label="Editar The Most Wanted Intense"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="21"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-22.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-22.svg}"
+                        />
+                        <div>
+                          <b>The Most Wanted Parfum</b><small>Azzaro</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="22"
+                          aria-label="Editar The Most Wanted Parfum"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="22"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-23.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-23.svg}"
+                        />
+                        <div><b>Erba Pura</b><small>Xerjoff</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 60.00</span> /
+                      <span class="table-price">S/ 110.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="23"
+                          aria-label="Editar Erba Pura"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="23"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-24.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-24.svg}"
+                        />
+                        <div><b>Naxos Edp</b><small>Xerjoff</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 60.00</span> /
+                      <span class="table-price">S/ 110.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="24"
+                          aria-label="Editar Naxos Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="24"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-25.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-25.svg}"
+                        />
+                        <div><b>Creed Aventus</b><small>Creed</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 61.75</span> /
+                      <span class="table-price">S/ 95.00</span> /
+                      <span class="table-price">S/ 175.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="25"
+                          aria-label="Editar Creed Aventus"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="25"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-26.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-26.svg}"
+                        />
+                        <div>
+                          <b>Bleu De Chanel Edp</b><small>Chanel</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 29.25</span> /
+                      <span class="table-price">S/ 45.00</span> /
+                      <span class="table-price">S/ 75.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="26"
+                          aria-label="Editar Bleu De Chanel Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="26"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-27.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-27.svg}"
+                        />
+                        <div><b>Sauvage Elixir</b><small>Dior</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 42.25</span> /
+                      <span class="table-price">S/ 65.00</span> /
+                      <span class="table-price">S/ 110.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="27"
+                          aria-label="Editar Sauvage Elixir"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="27"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-28.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-28.svg}"
+                        />
+                        <div><b>Sauvage Edp</b><small>Dior</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 25.35</span> /
+                      <span class="table-price">S/ 39.00</span> /
+                      <span class="table-price">S/ 69.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="28"
+                          aria-label="Editar Sauvage Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="28"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-29.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-29.svg}"
+                        />
+                        <div>
+                          <b>Light Blue Edt</b
+                          ><small>Dolce &amp; Gabbana</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 19.50</span> /
+                      <span class="table-price">S/ 30.00</span> /
+                      <span class="table-price">S/ 50.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="29"
+                          aria-label="Editar Light Blue Edt"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="29"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-30.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-30.svg}"
+                        />
+                        <div>
+                          <b>212 Vip Black</b><small>Carolina Herrera</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="30"
+                          aria-label="Editar 212 Vip Black"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="30"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-31.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-31.svg}"
+                        />
+                        <div><b>Eros Edp</b><small>Versace</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 19.50</span> /
+                      <span class="table-price">S/ 30.00</span> /
+                      <span class="table-price">S/ 55.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="31"
+                          aria-label="Editar Eros Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="31"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-32.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-32.svg}"
+                        />
+                        <div><b>Eros Flame Edp</b><small>Versace</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 19.50</span> /
+                      <span class="table-price">S/ 30.00</span> /
+                      <span class="table-price">S/ 55.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="32"
+                          aria-label="Editar Eros Flame Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="32"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-33.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-33.svg}"
+                        />
+                        <div>
+                          <b>Club De Nuit Precieux I</b><small>Armaf</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 22.75</span> /
+                      <span class="table-price">S/ 35.00</span> /
+                      <span class="table-price">S/ 60.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="33"
+                          aria-label="Editar Club De Nuit Precieux I"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="33"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-34.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-34.svg}"
+                        />
+                        <div><b>9Pm Night Out</b><small>Afnan</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="34"
+                          aria-label="Editar 9Pm Night Out"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="34"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-35.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-35.svg}"
+                        />
+                        <div><b>Chapter 1</b><small>French Avenue</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 40.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="35"
+                          aria-label="Editar Chapter 1"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="35"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-36.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-36.svg}"
+                        />
+                        <div>
+                          <b>Royal Amber</b><small>French Avenue</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 40.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="36"
+                          aria-label="Editar Royal Amber"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="36"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-37.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-37.svg}"
+                        />
+                        <div>
+                          <b>Amber Oud Gold Edition</b
+                          ><small>Al Haramain</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="37"
+                          aria-label="Editar Amber Oud Gold Edition"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="37"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-38.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-38.svg}"
+                        />
+                        <div>
+                          <b>Amber Oud Aqua Dubai</b><small>Al Haramain</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="38"
+                          aria-label="Editar Amber Oud Aqua Dubai"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="38"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-39.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-39.svg}"
+                        />
+                        <div><b>Khamrah</b><small>Lattafa</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="39"
+                          aria-label="Editar Khamrah"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="39"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-40.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-40.svg}"
+                        />
+                        <div><b>Khamrah Qahwa</b><small>Lattafa</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="40"
+                          aria-label="Editar Khamrah Qahwa"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="40"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-41.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-41.svg}"
+                        />
+                        <div><b>Khamrah Waha</b><small>Lattafa</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="41"
+                          aria-label="Editar Khamrah Waha"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="41"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-42.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-42.svg}"
+                        />
+                        <div><b>Asad Black</b><small>Lattafa</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="42"
+                          aria-label="Editar Asad Black"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="42"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-43.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-43.svg}"
+                        />
+                        <div>
+                          <b>Hawas Verde Rasasi</b><small>Rasasi</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="43"
+                          aria-label="Editar Hawas Verde Rasasi"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="43"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-44.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-44.svg}"
+                        />
+                        <div><b>Hawas Ice Rasasi</b><small>Rasasi</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="44"
+                          aria-label="Editar Hawas Ice Rasasi"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="44"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-45.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-45.svg}"
+                        />
+                        <div><b>Hawas Fire Rasasi</b><small>Rasasi</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="45"
+                          aria-label="Editar Hawas Fire Rasasi"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="45"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-46.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-46.svg}"
+                        />
+                        <div>
+                          <b>Hawas Tropical Rasasi</b><small>Rasasi</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 16.25</span> /
+                      <span class="table-price">S/ 25.00</span> /
+                      <span class="table-price">S/ 35.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="46"
+                          aria-label="Editar Hawas Tropical Rasasi"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="46"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-47.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-47.svg}"
+                        />
+                        <div><b>9Pm Edp</b><small>Afnan</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="47"
+                          aria-label="Editar 9Pm Edp"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="47"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-48.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-48.svg}"
+                        />
+                        <div><b>9Am Dive</b><small>Afnan</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="48"
+                          aria-label="Editar 9Am Dive"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="48"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-49.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-49.svg}"
+                        />
+                        <div><b>Odyssey Aqua</b><small>Armaf</small></div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="49"
+                          aria-label="Editar Odyssey Aqua"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="49"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-product">
+                        <img
+                          src="/assets/perfume-50.svg"
+                          alt=""
+                          th:src="@{/assets/perfume-50.svg}"
+                        />
+                        <div>
+                          <b>Odyssey Mandarin Sky</b><small>Armaf</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Precios 3 / 5 / 10 ml">
+                      <span class="table-price">S/ 13.00</span> /
+                      <span class="table-price">S/ 20.00</span> /
+                      <span class="table-price">S/ 30.00</span>
+                    </td>
+                    <td data-label="Stock 3 / 5 / 10 ml">
+                      <div class="stock-chips">
+                        <span class="" title="3 ml">24</span
+                        ><span class="" title="5 ml">20</span
+                        ><span class="" title="10 ml">12</span>
+                      </div>
+                    </td>
+                    <td data-label="Oferta">
+                      <span class="discount-chip">0%</span>
+                    </td>
+                    <td>
+                      <div class="table-actions">
+                        <button
+                          class="circle-btn"
+                          data-action="edit-product"
+                          data-id="50"
+                          aria-label="Editar Odyssey Mandarin Sky"
+                          title="Editar"
+                        >
+                          <svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path
+                              d="m14 5 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15l-1 5Z"
+                            ></path>
+                          </svg></button
+                        ><button
+                          class="btn light"
+                          data-action="stock-zero"
+                          data-id="50"
+                        >
+                          Agotar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

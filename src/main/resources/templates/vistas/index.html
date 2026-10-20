@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Índice de pantallas')}">
+    <title>Índice de pantallas · Decanly</title>
+  </head>
+  <body data-route="inicio" data-page="vistas/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="section">
+        <span class="eyebrow">Proyecto para Spring Tools</span>
+        <h1>Frontend listo para conectar.</h1>
+        <p>
+          Interacciones de compra, formularios y administración habilitados. En
+          modo local, los cambios de productos, packs y carrito permanecen en
+          esta pestaña.
+        </p>
+        <div class="page-directory">
+          <a class="panel" href="/" th:href="@{/}"
+            ><h2>Inicio</h2>
+            <small>templates/inicio/index.html</small></a
+          ><a class="panel" href="/catalogo" th:href="@{/catalogo}"
+            ><h2>Catálogo</h2>
+            <small>templates/catalogo/index.html</small></a
+          ><a class="panel" href="/promociones" th:href="@{/promociones}"
+            ><h2>Promociones</h2>
+            <small>templates/promociones/index.html</small></a
+          ><a class="panel" href="/packs" th:href="@{/packs}"
+            ><h2>Arma tu pack</h2>
+            <small>templates/packs/index.html</small></a
+          ><a class="panel" href="/contacto" th:href="@{/contacto}"
+            ><h2>Contacto</h2>
+            <small>templates/contacto/index.html</small></a
+          ><a class="panel" href="/cuenta" th:href="@{/cuenta}"
+            ><h2>Mi cuenta</h2>
+            <small>templates/cuenta/index.html</small></a
+          ><a class="panel" href="/terminos" th:href="@{/terminos}"
+            ><h2>Términos y condiciones</h2>
+            <small>templates/legal/terminos.html</small></a
+          ><a class="panel" href="/envios" th:href="@{/envios}"
+            ><h2>Envíos y cambios</h2>
+            <small>templates/legal/envios.html</small></a
+          ><a class="panel" href="/privacidad" th:href="@{/privacidad}"
+            ><h2>Privacidad</h2>
+            <small>templates/legal/privacidad.html</small></a
+          ><a class="panel" href="/carrito/vacio" th:href="@{/carrito/vacio}"
+            ><h2>Carrito vacío</h2>
+            <small>templates/carrito/vacio.html</small></a
+          ><a class="panel" href="/carrito" th:href="@{/carrito}"
+            ><h2>Carrito</h2>
+            <small>templates/carrito/index.html</small></a
+          ><a class="panel" href="/producto" th:href="@{/producto}"
+            ><h2>Productos y stock</h2>
+            <small>templates/producto/index.html</small></a
+          ><a class="panel" href="/promocion" th:href="@{/promocion}"
+            ><h2>Promociones y packs</h2>
+            <small>templates/promocion/index.html</small></a
+          ><a class="panel" href="/producto/new" th:href="@{/producto/new}"
+            ><h2>Nuevo perfume</h2>
+            <small>templates/producto/create.html</small></a
+          ><a class="panel" href="/producto/edit" th:href="@{/producto/edit}"
+            ><h2>Editar perfume</h2>
+            <small>templates/producto/edit.html</small></a
+          ><a class="panel" href="/promocion/new" th:href="@{/promocion/new}"
+            ><h2>Nuevo pack</h2>
+            <small>templates/promocion/create.html</small></a
+          ><a class="panel" href="/promocion/edit" th:href="@{/promocion/edit}"
+            ><h2>Editar pack</h2>
+            <small>templates/promocion/edit.html</small></a
+          ><a
+            class="panel"
+            href="/perfume/detalle"
+            th:href="@{/perfume/detalle}"
+            ><h2>Detalle de perfume</h2>
+            <small>templates/perfume/detalle.html</small></a
+          >
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

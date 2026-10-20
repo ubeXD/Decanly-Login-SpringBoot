@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Carrito vacío')}">
+    <title>Carrito vacío · Decanly</title>
+  </head>
+  <body data-route="carrito" data-page="carrito/vacio">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">Tu selección</div>
+        <h1>Pequeños frascos.<br /><em>Grandes elecciones.</em></h1>
+        <p>
+          Revisa tu selección. El vendedor confirmará disponibilidad, envío y
+          forma de pago.
+        </p>
+      </section>
+      <section class="section" style="padding-top: 15px">
+        <div class="empty">
+          <h2>Tu carrito aún no tiene un aroma.</h2>
+          <p>Encuentra ese perfume que quieres probar.</p>
+          <a class="btn" href="/catalogo" th:href="@{/catalogo}"
+            >Explorar perfumes ↗</a
+          >
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

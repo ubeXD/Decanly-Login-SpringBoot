@@ -1,0 +1,510 @@
+/* Carruseles informativos: mismo contenido, una tarjeta a la vez. */
+.benefit-grid.info-carousel,
+.service-grid.info-carousel {
+  display: block;
+  padding-block: 30px 20px;
+}
+.info-carousel .info-viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+  border-radius: 14px;
+  outline-offset: 4px;
+}
+.info-carousel .info-track {
+  display: flex;
+  align-items: stretch;
+}
+.info-carousel .info-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  padding: 0;
+  text-align: left;
+}
+.info-carousel .info-card {
+  width: 100%;
+  max-width: 800px;
+  min-height: 158px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 28px 48px;
+}
+.benefit-grid.info-carousel .info-viewport {
+  background: #f5f6f2;
+}
+.info-carousel .info-card > .ui-icon {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  color: #28685e;
+  stroke-width: 1.2;
+  margin: 0;
+}
+.info-carousel .info-copy {
+  flex: 1;
+  max-width: 550px;
+}
+.info-carousel .info-copy h3 {
+  font-size: clamp(18px, 2.1vw, 24px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.7px;
+  margin: 0 0 10px;
+}
+.info-carousel .info-copy p {
+  max-width: 550px;
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+  color: #67716b;
+}
+.service-grid.info-carousel .info-card {
+  min-height: 120px;
+}
+.info-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+.info-dots button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 32px;
+  padding: 8px;
+  background: transparent;
+  border: 0;
+}
+.info-dots button span {
+  height: 5px;
+  width: 5px;
+  border-radius: 10px;
+  background: #b9c0bb;
+  transition:
+    width 0.2s,
+    background 0.2s;
+}
+.info-dots button[aria-pressed="true"] span {
+  width: 20px;
+  background: #28594f;
+}
+.info-dots button:focus-visible {
+  outline: 2px solid #28594f;
+  outline-offset: 0;
+  border-radius: 5px;
+}
+/* Galería del modal y mantenimiento de fotografías. */
+.detail-thumbnails {
+  min-width: 0;
+  max-width: 100%;
+  max-height: 414px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  align-self: center;
+  padding: 2px;
+}
+.detail-thumbnails::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.detail-thumbnails button {
+  min-width: 0;
+  max-width: 100%;
+}
+.detail-thumbnails img,
+.detail-thumbnails .reference-photo {
+  max-width: 100%;
+}
+.detail-thumbnails .reference-photo {
+  width: 42px;
+  height: 59px;
+}
+.detail-photo-label {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  padding: 0 8px;
+}
+/* Fotografías del producto: carrusel manual con gesto, puntos y miniaturas. */
+.detail-carousel {
+  min-width: 0;
+}
+.detail-carousel .detail-art {
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+  outline-offset: 3px;
+  user-select: none;
+}
+.detail-carousel .detail-art[tabindex] {
+  cursor: grab;
+}
+.detail-carousel .detail-art.is-dragging {
+  cursor: grabbing;
+}
+.detail-photo-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+.detail-photo-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-photo-slide > img,
+.detail-photo-slide > .reference-photo {
+  width: 100%;
+  height: 90%;
+  object-fit: contain;
+  -webkit-user-drag: none;
+}
+.detail-photo-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 20px;
+  padding: 6px 10px;
+  background: #ffffffeb;
+  color: #586157;
+  border: 1px solid #e7eae3;
+  font-size: 10px;
+  line-height: 1;
+  pointer-events: none;
+}
+.detail-carousel .detail-photo-label {
+  position: static;
+  display: block;
+  min-height: 24px;
+  margin-top: 6px;
+}
+.detail-photo-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.detail-photo-dots button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 28px;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+}
+.detail-photo-dots button span {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background: #c3c9bf;
+  transition:
+    width 180ms ease,
+    background 180ms ease;
+}
+.detail-photo-dots button.selected span {
+  width: 18px;
+  background: #28594f;
+}
+.detail-photo-dots button:focus-visible {
+  outline: 2px solid #28594f;
+  border-radius: 5px;
+}
+.form-grid > .gallery-editor {
+  grid-column: 1 / -1;
+}
+#product-form > button[type="submit"] {
+  grid-column: 1 / -1;
+  justify-self: start;
+  align-self: start;
+  width: auto;
+  min-width: 0;
+  min-height: 40px;
+  padding: 10px 18px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.gallery-editor {
+  min-width: 0;
+  border: 1px solid #dfe4dc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 8px 0 18px;
+  background: #fafbf8;
+}
+.gallery-editor legend {
+  padding-inline: 8px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.gallery-editor > .hint {
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.gallery-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.gallery-upload > .ui-icon {
+  width: 28px;
+  height: 28px;
+}
+.gallery-upload > span {
+  flex: 1;
+  min-width: 0;
+}
+.gallery-upload .field {
+  font-size: 12px;
+  margin-block: 6px 8px;
+  background: #fff;
+}
+.gallery-editor-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.gallery-editor-card {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #e4e8e0;
+  border-radius: 9px;
+  padding: 9px;
+}
+.gallery-editor-photo {
+  position: relative;
+  height: 126px;
+  margin-bottom: 10px;
+  background: #f7f8f4;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.gallery-editor-photo img,
+.gallery-editor-photo svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.gallery-editor-photo > span {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 10px;
+  color: #fff;
+  background: #234f44;
+}
+.gallery-editor-card label {
+  font-size: 10px;
+  font-weight: 500;
+}
+.gallery-editor-card .field {
+  font-size: 12px;
+  padding: 8px;
+  margin-top: 4px;
+  min-height: 36px;
+}
+.gallery-editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 8px;
+}
+.gallery-editor-actions button {
+  min-height: 34px;
+  min-width: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  background: #f4f6f1;
+  border-radius: 4px;
+}
+.gallery-editor-actions .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+.gallery-editor-actions .gallery-remove {
+  margin-left: auto;
+  font-size: 11px;
+  color: #923f35;
+  background: #fcf1ee;
+}
+.gallery-empty {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 18px;
+  text-align: center;
+  border: 1px dashed #c5cec0;
+  border-radius: 6px;
+  color: #697364;
+}
+.gallery-status {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 12px 0 0;
+  color: #28594f;
+}
+.gallery-status:empty {
+  display: none;
+}
+.gallery-status.error {
+  color: #a03d30;
+}
+.gallery-editor[aria-busy="true"] .gallery-editor-actions {
+  pointer-events: none;
+  opacity: 0.5;
+}
+@media (max-width: 700px) {
+  .info-carousel .info-card {
+    padding: 24px 22px;
+    min-height: 236px;
+    gap: 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+  .info-carousel .info-card > .ui-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+  .info-carousel .info-copy {
+    flex: 0 1 auto;
+  }
+  .info-carousel .info-copy h3 {
+    font-size: 19px;
+    letter-spacing: -0.4px;
+  }
+  .info-carousel .info-copy p {
+    font-size: 13px;
+  }
+  .service-grid.info-carousel .info-card {
+    min-height: 176px;
+  }
+  .gallery-editor {
+    padding: 14px;
+  }
+  .gallery-editor-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .gallery-editor-photo {
+    height: 112px;
+  }
+  .detail-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .detail-carousel {
+    order: 0;
+    width: 100%;
+  }
+  .detail-art {
+    order: 0;
+    width: 100%;
+  }
+  .detail-thumbnails {
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-height: none;
+    overflow: auto;
+    align-self: stretch;
+  }
+  .detail-thumbnails button {
+    flex: 0 0 55px;
+    width: 55px;
+    height: 66px;
+  }
+  .detail-thumbnails .reference-photo,
+  .detail-thumbnails img {
+    width: 42px;
+    height: 52px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .info-track,
+  .info-dots button span,
+  .detail-photo-track,
+  .detail-photo-dots button span {
+    transition: none !important;
+  }
+}
+
+/* Etiquetas editoriales y contacto: misma tipografía y ritmo visual. */
+.promo-editorial {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #846424;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  min-height: 28px;
+  margin: 12px 0 0;
+}
+.promo-editorial svg {
+  width: 16px;
+  height: 16px;
+}
+.contact-email {
+  display: block;
+  font-size: 14px;
+  margin: 8px 0 18px;
+  overflow-wrap: anywhere;
+}
+.checkout-form .check-label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 18px 0;
+}
+.checkout-form .check-label input {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin: 1px 0;
+  accent-color: #122549;
+}
+.checkout-form .check-label span {
+  line-height: 1.5;
+}
+.orders-table td {
+  vertical-align: top;
+}
+.order-detail {
+  white-space: pre-line;
+  line-height: 1.65;
+}
+.order-state {
+  border-radius: 99px;
+  background: #eef3fa;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.admin-order-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media(max-width:650px){.orders-table,.orders-table tbody,.orders-table tr,.orders-table td{display:block;width:100%;min-width:0}.orders-table thead{display:none}.orders-table tr{margin-bottom:16px;padding:14px;border:1px solid #dce4ee;border-radius:12px}.orders-table td{padding:8px 0;overflow-wrap:anywhere}.orders-table td[data-label]::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;margin-bottom:5px}.orders-table select{width:100%}}

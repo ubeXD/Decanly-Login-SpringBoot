@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Envíos y cambios')}">
+    <title>Envíos y cambios · Decanly</title>
+  </head>
+  <body data-route="envios" data-page="legal/envios">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">Información para tu compra</div>
+        <h1>Envíos, cambios <em>y devoluciones.</em></h1>
+      </section>
+      <section class="section legal-content">
+        <div class="notice">Ingresa con tu cuenta de administrador.</div>
+        <h2>Envío gratis desde S/ 200</h2>
+        <p>
+          La promoción se calcula sobre el total de productos después de los
+          descuentos. Desde S/ 200, el carrito muestra envío a S/ 0.00. Por
+          debajo del mínimo, el costo de entrega debe informarse antes del pago.
+        </p>
+        <p>
+          <strong>Cobertura:</strong> Pendiente de definir por el negocio. La
+          cobertura de la promoción debe confirmarse antes de aceptar pedidos
+          reales.
+        </p>
+        <p>
+          <strong>Plazos:</strong> Pendientes de definir. El vendedor debe
+          comunicar la fecha o el plazo de entrega antes del pago.
+        </p>
+
+        <h2>Si hay un problema con tu pedido</h2>
+        <p>
+          Si recibes un perfume distinto, un atomizador con fuga o un producto
+          dañado, comunícate al +51 936 240 578 e indica el pedido y lo
+          ocurrido. Puedes adjuntar fotos para facilitar la atención. El negocio
+          debe evaluar y comunicar la solución que corresponda, sin desconocer
+          tus derechos como consumidor.
+        </p>
+        <h2>Cambios por preferencia de aroma</h2>
+        <p>
+          La política comercial de cambios por gusto o preferencia está
+          pendiente de ser definida por el negocio y debe informarse antes de la
+          compra. Esto no elimina los derechos que correspondan por productos
+          defectuosos, incorrectos o que no cumplan lo ofrecido.
+        </p>
+        <h2>Reclamos y quejas</h2>
+        <p>
+          La atención de reclamos es gratuita. Accede al . El plazo de respuesta
+          informado por Indecopi es de 15 días hábiles, no prorrogables.
+        </p>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

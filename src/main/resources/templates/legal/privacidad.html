@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Privacidad')}">
+    <title>Privacidad · Decanly</title>
+  </head>
+  <body data-route="privacidad" data-page="legal/privacidad">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">Información para tu compra</div>
+        <h1>Política <em>de privacidad.</em></h1>
+      </section>
+      <section class="section legal-content">
+        <div class="notice">Ingresa con tu cuenta de administrador.</div>
+        <h2>Responsable de la información</h2>
+        <dl class="provider-info">
+          <dt>Nombre comercial</dt>
+          <dd>Decanly</dd>
+          <dt>Titular o razón social</dt>
+          <dd>Pendiente de completar por el negocio</dd>
+          <dt>RUC</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>Domicilio</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>Correo de atención</dt>
+          <dd>Pendiente de completar</dd>
+          <dt>WhatsApp</dt>
+          <dd>+51 936 240 578</dd>
+        </dl>
+        <h2>Datos que solicitan los pedidos</h2>
+        <p>
+          El formulario pide nombre, distrito o ciudad y una nota opcional para
+          preparar la solicitud de compra. Evita incluir información sensible en
+          la nota. Al pulsar “Pedir por WhatsApp”, esos datos y los productos
+          seleccionados se incorporan a un enlace que abre WhatsApp, un servicio
+          externo. Tú decides enviar el mensaje.
+        </p>
+        <h2>Uso y conservación</h2>
+        <p>
+          La finalidad prevista es atender consultas, coordinar pedidos y
+          entregas y brindar atención posventa. No solicitamos autorización para
+          publicidad ni añadimos suscripciones automáticas.
+        </p>
+
+        <p>
+          <strong>Conservación por el negocio:</strong> Pendiente de definir por
+          el responsable. Debe informar el plazo o criterio de conservación y
+          atender las obligaciones aplicables antes de operar.
+        </p>
+        <h2>Servicios externos</h2>
+
+        <h2>Ejercicio de derechos</h2>
+        <p>
+          Puedes solicitar al responsable información sobre tus datos y ejercer
+          los derechos de acceso, rectificación, cancelación y oposición que
+          correspondan. El correo para atender estas solicitudes está pendiente
+          de completar. El negocio debe definir y comunicar el procedimiento, el
+          responsable y los destinatarios de los datos antes de captar
+          información para ventas reales.
+        </p>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

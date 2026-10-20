@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Promociones')}">
+    <title>Promociones · Decanly</title>
+  </head>
+  <body data-route="promociones" data-page="promociones/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">La selección Decanly</div>
+        <h1>Un pack. Muchas versiones de ti.</h1>
+        <p>
+          Tres o más fragancias, tus tamaños favoritos y un precio para
+          descubrir más.
+        </p>
+      </section>
+      <section class="section promotions-section">
+        <div class="promotion-note">
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M3 3h8l10 10-8 8L3 11V3Z"></path>
+            <circle cx="7" cy="7" r="1"></circle>
+          </svg>
+          <span
+            >Hasta <b>10% de ahorro</b> en packs de 3 perfumes distintos.
+            Aplicamos la mejor oferta, sin acumular descuentos.</span
+          ><a href="/packs" th:href="@{/packs}"
+            >Arma el tuyo
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+          ></a>
+        </div>
+        <div class="promo-grid">
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-8.svg"
+                alt="Aqua Di Gio Profondo"
+                loading="lazy"
+                th:src="@{/assets/perfume-8.svg}"
+              /><img
+                src="/assets/perfume-31.svg"
+                alt="Eros Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-31.svg}"
+              /><img
+                src="/assets/perfume-38.svg"
+                alt="Amber Oud Aqua Dubai"
+                loading="lazy"
+                th:src="@{/assets/perfume-38.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Frescura diaria</h3>
+            <p class="promo-description">
+              Aromas frescos para el trabajo, las clases y tus salidas.
+            </p>
+            <div class="promo-price">
+              <del>S/ 90.00</del><strong>S/ 81.00 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="1"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="1"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="1"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Aqua Di Gio Profondo <span>1 × 5 ml</span></li>
+                <li>Eros Edp <span>1 × 5 ml</span></li>
+                <li>Amber Oud Aqua Dubai <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="1">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="1">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="1">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-15.svg"
+                alt="Le Male Elixir"
+                loading="lazy"
+                th:src="@{/assets/perfume-15.svg}"
+              /><img
+                src="/assets/perfume-30.svg"
+                alt="212 Vip Black"
+                loading="lazy"
+                th:src="@{/assets/perfume-30.svg}"
+              /><img
+                src="/assets/perfume-21.svg"
+                alt="The Most Wanted Intense"
+                loading="lazy"
+                th:src="@{/assets/perfume-21.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Noche especial</h3>
+            <p class="promo-description">
+              Perfumes intensos para una cita o una ocasión especial.
+            </p>
+            <div class="promo-price">
+              <del>S/ 109.00</del><strong>S/ 98.10 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="2"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="2"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="2"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Le Male Elixir <span>1 × 5 ml</span></li>
+                <li>212 Vip Black <span>1 × 5 ml</span></li>
+                <li>The Most Wanted Intense <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="2">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="2">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="2">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-39.svg"
+                alt="Khamrah"
+                loading="lazy"
+                th:src="@{/assets/perfume-39.svg}"
+              /><img
+                src="/assets/perfume-49.svg"
+                alt="Odyssey Aqua"
+                loading="lazy"
+                th:src="@{/assets/perfume-49.svg}"
+              /><img
+                src="/assets/perfume-50.svg"
+                alt="Odyssey Mandarin Sky"
+                loading="lazy"
+                th:src="@{/assets/perfume-50.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Mi primer pack</h3>
+            <p class="promo-description">
+              Tres perfumes para empezar a descubrir tus favoritos.
+            </p>
+            <div class="promo-price">
+              <del>S/ 60.00</del><strong>S/ 54.00 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="3"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="3"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="3"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Khamrah <span>1 × 5 ml</span></li>
+                <li>Odyssey Aqua <span>1 × 5 ml</span></li>
+                <li>Odyssey Mandarin Sky <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="3">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="3">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="3">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-28.svg"
+                alt="Sauvage Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-28.svg}"
+              /><img
+                src="/assets/perfume-26.svg"
+                alt="Bleu De Chanel Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-26.svg}"
+              /><img
+                src="/assets/perfume-2.svg"
+                alt="Y Eau De Parfum"
+                loading="lazy"
+                th:src="@{/assets/perfume-2.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Favoritos de diseñador</h3>
+            <p class="promo-description">
+              Una selección de Dior, Chanel y Yves Saint Laurent.
+            </p>
+            <div class="promo-price">
+              <del>S/ 123.00</del><strong>S/ 110.70 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="4"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="4"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="4"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Sauvage Edp <span>1 × 5 ml</span></li>
+                <li>Bleu De Chanel Edp <span>1 × 5 ml</span></li>
+                <li>Y Eau De Parfum <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="4">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="4">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="4">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-6.svg"
+                alt="Stronger Intensely"
+                loading="lazy"
+                th:src="@{/assets/perfume-6.svg}"
+              /><img
+                src="/assets/perfume-40.svg"
+                alt="Khamrah Qahwa"
+                loading="lazy"
+                th:src="@{/assets/perfume-40.svg}"
+              /><img
+                src="/assets/perfume-15.svg"
+                alt="Le Male Elixir"
+                loading="lazy"
+                th:src="@{/assets/perfume-15.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Dulces e intensos</h3>
+            <p class="promo-description">
+              Vainilla, ámbar y notas cálidas para los días frescos.
+            </p>
+            <div class="promo-price">
+              <del>S/ 104.00</del><strong>S/ 93.60 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="5"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="5"
+                data-size="5"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="5"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml</button
+              ><span class="mixed-label">Mixto</span>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Stronger Intensely <span>1 × 5 ml</span></li>
+                <li>Khamrah Qahwa <span>1 × 10 ml</span></li>
+                <li>Le Male Elixir <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="5">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="5">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="5">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-18.svg"
+                alt="Paradise Garden"
+                loading="lazy"
+                th:src="@{/assets/perfume-18.svg}"
+              /><img
+                src="/assets/perfume-29.svg"
+                alt="Light Blue Edt"
+                loading="lazy"
+                th:src="@{/assets/perfume-29.svg}"
+              /><img
+                src="/assets/perfume-44.svg"
+                alt="Hawas Ice Rasasi"
+                loading="lazy"
+                th:src="@{/assets/perfume-44.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Escápate de la rutina</h3>
+            <p class="promo-description">
+              Tres opciones frescas para llevar en la mochila.
+            </p>
+            <div class="promo-price">
+              <del>S/ 109.00</del><strong>S/ 98.10 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="6"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="6"
+                data-size="5"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="6"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml</button
+              ><span class="mixed-label">Mixto</span>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Paradise Garden <span>1 × 5 ml</span></li>
+                <li>Light Blue Edt <span>1 × 10 ml</span></li>
+                <li>Hawas Ice Rasasi <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="6">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="6">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="6">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-25.svg"
+                alt="Creed Aventus"
+                loading="lazy"
+                th:src="@{/assets/perfume-25.svg}"
+              /><img
+                src="/assets/perfume-24.svg"
+                alt="Naxos Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-24.svg}"
+              /><img
+                src="/assets/perfume-23.svg"
+                alt="Erba Pura"
+                loading="lazy"
+                th:src="@{/assets/perfume-23.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Selección exclusiva</h3>
+            <p class="promo-description">
+              Descubre Aventus, Naxos y Erba Pura en un solo pack.
+            </p>
+            <div class="promo-price">
+              <del>S/ 215.00</del><strong>S/ 193.50 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="7"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="7"
+                data-size="5"
+                class="selected"
+                aria-pressed="true"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="7"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml
+              </button>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Creed Aventus <span>1 × 5 ml</span></li>
+                <li>Naxos Edp <span>1 × 5 ml</span></li>
+                <li>Erba Pura <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="7">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="7">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="7">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-9.svg"
+                alt="Valentino Coral Fantasy"
+                loading="lazy"
+                th:src="@{/assets/perfume-9.svg}"
+              /><img
+                src="/assets/perfume-17.svg"
+                alt="Le Beau Le Parfum"
+                loading="lazy"
+                th:src="@{/assets/perfume-17.svg}"
+              /><img
+                src="/assets/perfume-38.svg"
+                alt="Amber Oud Aqua Dubai"
+                loading="lazy"
+                th:src="@{/assets/perfume-38.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Un aroma para cada plan</h3>
+            <p class="promo-description">
+              Combina tamaños para el día, la noche y el fin de semana.
+            </p>
+            <div class="promo-price">
+              <del>S/ 133.00</del><strong>S/ 119.70 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="8"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="8"
+                data-size="5"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="8"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml</button
+              ><span class="mixed-label">Mixto</span>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Valentino Coral Fantasy <span>1 × 10 ml</span></li>
+                <li>Le Beau Le Parfum <span>1 × 5 ml</span></li>
+                <li>Amber Oud Aqua Dubai <span>1 × 5 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="8">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="8">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="8">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+          <article class="promo">
+            <div class="promo-images">
+              <span class="badge sale">PACK · 10%</span
+              ><img
+                src="/assets/perfume-37.svg"
+                alt="Amber Oud Gold Edition"
+                loading="lazy"
+                th:src="@{/assets/perfume-37.svg}"
+              /><img
+                src="/assets/perfume-39.svg"
+                alt="Khamrah"
+                loading="lazy"
+                th:src="@{/assets/perfume-39.svg}"
+              /><img
+                src="/assets/perfume-47.svg"
+                alt="9Pm Edp"
+                loading="lazy"
+                th:src="@{/assets/perfume-47.svg}"
+              />
+            </div>
+            <span class="brand">LA SELECCIÓN DECANLY</span>
+            <h3>Descubre los árabes</h3>
+            <p class="promo-description">
+              Tres aromas de Al Haramain, Lattafa y Afnan.
+            </p>
+            <div class="promo-price">
+              <del>S/ 75.00</del><strong>S/ 67.50 <small>PEN</small></strong>
+            </div>
+            <div class="size-options">
+              <button
+                data-action="promo-size"
+                data-id="9"
+                data-size="3"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 3 ml"
+              >
+                3 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="9"
+                data-size="5"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 5 ml"
+              >
+                5 ml</button
+              ><button
+                data-action="promo-size"
+                data-id="9"
+                data-size="10"
+                class=""
+                aria-pressed="false"
+                aria-label="Todos los decants de 10 ml"
+              >
+                10 ml</button
+              ><span class="mixed-label">Mixto</span>
+            </div>
+            <details class="promo-includes">
+              <summary>Ver los 3 perfumes</summary>
+              <ul>
+                <li>Amber Oud Gold Edition <span>1 × 5 ml</span></li>
+                <li>Khamrah <span>1 × 5 ml</span></li>
+                <li>9Pm Edp <span>1 × 10 ml</span></li>
+              </ul>
+            </details>
+            <div class="promo-actions">
+              <button class="btn outline" data-action="promo-cart" data-id="9">
+                Agregar al carrito
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></button
+              ><button class="btn" data-action="promo-buy" data-id="9">
+                Comprar ahora
+                <svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg></button
+              ><button class="text-link" data-action="choose-promo" data-id="9">
+                Personalizar este pack
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>

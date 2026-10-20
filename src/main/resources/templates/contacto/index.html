@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es-PE" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/layout :: head('Contacto')}">
+    <title>Contacto · Decanly</title>
+  </head>
+  <body data-route="contacto" data-page="contacto/index">
+    <div th:replace="~{fragments/layout :: cabecera}"></div>
+    <div
+      id="connection-status"
+      class="connection-status"
+      role="status"
+      hidden=""
+    ></div>
+    <main id="app" tabindex="-1">
+      <section class="page-head">
+        <div class="eyebrow">Estamos para ayudarte</div>
+        <h1>Tu próximo aroma<br /><em>empieza con una conversación.</em></h1>
+        <p>
+          ¿No sabes cuál elegir? Cuéntanos qué perfumes te gustan y te
+          orientamos.
+        </p>
+      </section>
+      <section class="section contact-grid" style="padding-top: 20px">
+        <div class="contact-card">
+          <div class="eyebrow">Atención personalizada</div>
+          <h2>Hablemos de<br /><i>tu próxima esencia.</i></h2>
+          <p>Pedidos, disponibilidad y entregas en Perú.</p>
+          <a
+            class="phone"
+            href="https://wa.me/51936240578"
+            target="_blank"
+            rel="noopener"
+            >+51 936 240 578</a
+          ><a class="contact-email" href="mailto:decanly@gmail.com"
+            >decanly@gmail.com</a
+          ><a
+            class="btn white"
+            href="https://wa.me/51936240578?text=Hola%20Decanly%2C%20quisiera%20asesor%C3%ADa%20para%20elegir%20un%20decant."
+            target="_blank"
+            rel="noopener"
+            >Escribir por WhatsApp ↗</a
+          >
+          <p class="hint">
+            Consulta cobertura, costo y plazo de entrega antes de confirmar tu
+            compra.
+          </p>
+        </div>
+        <div class="faq">
+          <h2>Antes de elegir</h2>
+          <details open="">
+            <summary>¿Qué es un decant?</summary>
+            <p>
+              Es una pequeña cantidad de perfume, transferida del frasco
+              original a un atomizador. Recibes el decant de 3, 5 o 10 ml, no el
+              frasco de marca que aparece en las fotografías.
+            </p>
+          </details>
+          <details>
+            <summary>¿Cuánto rinde cada tamaño?</summary>
+            <p>
+              3 ml es ideal para una primera prueba, 5 ml para conocer mejor el
+              aroma y 10 ml para llevar tu favorito. El rendimiento depende del
+              atomizador y de cuánto uses en cada aplicación.
+            </p>
+          </details>
+          <details>
+            <summary>¿Cómo realizo mi pedido?</summary>
+            <p>
+              Añade tus perfumes al carrito y envía tu selección por WhatsApp.
+              El vendedor confirma el stock, el importe final y los datos para
+              pagar.
+            </p>
+          </details>
+          <details>
+            <summary>¿Cómo se coordina el envío?</summary>
+            <p>
+              Indica tu distrito o ciudad. Te confirmaremos la cobertura, la
+              tarifa y el plazo antes del pago.
+            </p>
+          </details>
+          <details>
+            <summary>¿Puedo combinar tamaños en un pack?</summary>
+            <p>
+              Sí. Puedes combinar 3, 5 y 10 ml de diferentes perfumes. El precio
+              se actualiza con cada selección.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <div th:replace="~{fragments/layout :: pie}"></div>
+  </body>
+</html>
